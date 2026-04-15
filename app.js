@@ -1,4 +1,4 @@
-/* ════════════════════════════════════════════
+ㅁ/* ════════════════════════════════════════════
    연구실적 DOI 검증 시스템 — app.js
    ════════════════════════════════════════════ */
 
@@ -612,16 +612,20 @@ function renderRow(r) {
     issuesHtml += `<div style="color:var(--ok);font-size:11px">이상 없음</div>`;
   issuesHtml += '</div>';
 
-  // 논문제목
+  // 논문제목 (특수문자 안전 처리 — 템플릿 리터럴 밖에서 모두 escape)
   const titleMismatch = r.issues.includes('논문제목');
-  const titleCell = `
-    <div class="cell-compare">
-      <div class="paper-title ${titleMismatch ? 'mismatch' : ''}" title="${esc(r.title)}">${esc(trunc(r.title, 40))}</div>
-      <div class="cell-doi-val ${titleMismatch ? 'mismatch' : r.doiTitle ? 'match' : ''}" title="${esc(r.doiTitle||'')}">
-        ${r.doiTitle ? '▸ ' + esc(trunc(r.doiTitle, 40)) : r.status === 'checking' ? '…' : ''}
-      </div>
-      ${titleMismatch ? '<span class="mismatch-label">불일치</span>' : ''}
-    </div>`;
+  const t_orig = esc(trunc(r.title, 40));
+  const t_orig_full = esc(r.title);
+  const t_doi = r.doiTitle ? esc(trunc(r.doiTitle, 40)) : '';
+  const t_doi_full = esc(r.doiTitle || '');
+  const t_status = r.status === 'checking' ? '…' : '';
+  const titleCell = '<div class="cell-compare">'
+    + '<div class="paper-title ' + (titleMismatch ? 'mismatch' : '') + '" title="' + t_orig_full + '">' + t_orig + '</div>'
+    + '<div class="cell-doi-val ' + (titleMismatch ? 'mismatch' : t_doi ? 'match' : '') + '" title="' + t_doi_full + '">'
+    + (t_doi ? '&#9658; ' + t_doi : t_status)
+    + '</div>'
+    + (titleMismatch ? '<span class="mismatch-label">불일치</span>' : '')
+    + '</div>';
 
   return `<tr class="${rowClass}">
     <td class="col-no"><span class="cell-no">${r.idx}</span></td>
