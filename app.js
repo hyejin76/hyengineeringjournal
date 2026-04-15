@@ -216,7 +216,13 @@ async function verifyRow(row) {
     // 3. 교신저자명 컬럼으로 추가 판별
     inferRoleFromCorrNames(row);
 
-    // 4. 최종 이슈 계산
+    // 4. 판별 결과가 없으면 '참여자'로 확정 (조회중 상태 방지)
+    if (!row.inferredRole || row.inferredRole === 'checking') {
+      row.inferredRole = row._firstAuthor ? '제1저자' : '참여자';
+      row.roleSource = '저자순서 (기본)';
+    }
+
+    // 5. 최종 이슈 계산
     computeIssues(row);
 
   } catch (e) {
@@ -308,9 +314,13 @@ function findAuthorIndex(authors, nameLower) {
 
 /* ── PubMed API ── */
 async function fetchPubMed(doi) {
+  // 5초 타임아웃 (Scopus 논문 등 PubMed에 없는 경우 무한 대기 방지)
+  const timeout = (ms) => new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), ms));
+  const fetchWithTimeout = (url) => Promise.race([fetch(url), timeout(5000)]);
+
   try {
     // Step 1: DOI → PMID
-    const searchRes = await fetch(
+    const searchRes = await fetchWithTimeout(
       `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${encodeURIComponent(doi)}[DOI]&retmode=json`
     );
     if (!searchRes.ok) return null;
@@ -319,7 +329,7 @@ async function fetchPubMed(doi) {
     if (!ids.length) return null;
 
     // Step 2: PMID → XML (저자 메타데이터)
-    const fetchRes = await fetch(
+    const fetchRes = await fetchWithTimeout(
       `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=${ids[0]}&retmode=xml`
     );
     if (!fetchRes.ok) return null;
