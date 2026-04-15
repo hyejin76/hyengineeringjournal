@@ -23,14 +23,15 @@ function processFile(file) {
   reader.onload = function(e) {
     try {
       const raw = e.target.result;
-      const head = new TextDecoder('utf-8').decode(new Uint8Array(raw, 0, Math.min(512, raw.byteLength)));
+      const bytes = new Uint8Array(raw);
+      const head = new TextDecoder('utf-8').decode(bytes.slice(0, 512));
       const isXml = head.includes('<?xml') || head.includes('schemas-microsoft-com');
       let json;
       if (isXml) {
-        const xmlText = new TextDecoder('utf-8').decode(new Uint8Array(raw));
+        const xmlText = new TextDecoder('utf-8').decode(bytes);
         json = parseXmlSpreadsheet(xmlText);
       } else {
-        const wb = XLSX.read(new Uint8Array(raw), { type: 'array' });
+        const wb = XLSX.read(bytes, { type: 'array' });
         const ws = wb.Sheets[wb.SheetNames[0]];
         json = XLSX.utils.sheet_to_json(ws, { defval: '' });
       }
@@ -45,41 +46,38 @@ function processFile(file) {
 }
 
 function parseXmlSpreadsheet(xmlText) {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(xmlText, 'text/xml');
-  const parseErr = doc.querySelector('parsererror');
-  if (parseErr) throw new Error('XML 파싱 실패');
-  const ns = 'urn:schemas-microsoft-com:office:spreadsheet';
-  const getCell = (cell) => {
-    const d = cell.getElementsByTagNameNS(ns, 'Data')[0] || cell.getElementsByTagName('Data')[0];
-    return d ? d.textContent.trim() : '';
-  };
-  const getCellIndex = (cell) => {
-    return cell.getAttributeNS(ns, 'Index') || cell.getAttribute('ss:Index') || null;
-  };
-  const getCells = (row) => {
-    const r = row.getElementsByTagNameNS(ns, 'Cell');
-    return r.length ? r : row.getElementsByTagName('Cell');
-  };
-  let rowEls = doc.getElementsByTagNameNS(ns, 'Row');
-  if (!rowEls.length) rowEls = doc.getElementsByTagName('Row');
-  if (!rowEls.length) throw new Error('Row 데이터 없음');
-  const headers = [];
-  for (let c of getCells(rowEls[0])) {
-    const idx = getCellIndex(c);
-    if (idx) while (headers.length < parseInt(idx) - 1) headers.push('');
-    headers.push(getCell(c));
-  }
-  const json = [];
-  for (let i = 1; i < rowEls.length; i++) {
-    const obj = {};
-    let colIdx = 0;
-    for (let c of getCells(rowEls[i])) {
-      const idx = getCellIndex(c);
-      if (idx) colIdx = parseInt(idx) - 1;
-      if (headers[colIdx]) obj[headers[colIdx]] = getCell(c);
-      colIdx++;
+  // CDATA 언래핑
+  const unwrap = (s) => s.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1').trim();
+
+  // Row 블록 추출
+  const rowMatches = xmlText.match(/<(?:[a-z]+:)?Row[^>]*>[\s\S]*?<\/(?:[a-z]+:)?Row>/gi);
+  if (!rowMatches || !rowMatches.length) throw new Error('Row 데이터를 찾을 수 없습니다.');
+
+  // Cell 추출 함수
+  const parseCells = (rowHtml) => {
+    const cells = [];
+    const cellRe = /<(?:[a-z]+:)?Cell[^>]*>([\s\S]*?)<\/(?:[a-z]+:)?Cell>/gi;
+    let cm;
+    while ((cm = cellRe.exec(rowHtml)) !== null) {
+      const inner = cm[1];
+      const dataMatch = inner.match(/<(?:[a-z]+:)?Data[^>]*>([\s\S]*?)<\/(?:[a-z]+:)?Data>/i);
+      cells.push(dataMatch ? unwrap(dataMatch[1]) : '');
     }
+    return cells;
+  };
+
+  // 헤더
+  const headers = parseCells(rowMatches[0]);
+  if (!headers.length) throw new Error('헤더를 찾을 수 없습니다.');
+
+  // 데이터
+  const json = [];
+  for (let i = 1; i < rowMatches.length; i++) {
+    const vals = parseCells(rowMatches[i]);
+    const obj = {};
+    headers.forEach((h, idx) => {
+      if (h) obj[h] = vals[idx] !== undefined ? vals[idx] : '';
+    });
     if (Object.values(obj).some(v => v !== '')) json.push(obj);
   }
   return json;
@@ -110,16 +108,18 @@ function buildRows(json) {
 function str(v) { return (v || '').toString().trim(); }
 
 function detectColumns(keys) {
+  // 정확히 일치하는 컬럼 우선, 없으면 포함 매칭
+  const findExact = (exact) => keys.find(k => k === exact) || '';
   const find = (...patterns) =>
     keys.find(k => patterns.some(p => k.toLowerCase().includes(p))) || '';
   return {
-    title:     find('논문제목', 'title', '제목'),
-    doi:       find('doi', '아이디'),
-    date:      find('발표일'),
-    journal:   find('학술지명', 'journal'),
-    role:      find('참여형태', '역할'),
-    corrNames: find('교신저자명'),
-    name:      find('성명', 'name'),
+    title:     findExact('논문제목') || find('논문제목', 'title', '제목'),
+    doi:       findExact('doi(논문아이디)') || find('doi', '아이디'),
+    date:      findExact('발표일') || find('발표일'),
+    journal:   findExact('학술지명') || find('학술지명', 'journal'),
+    role:      findExact('참여형태') || find('참여형태', '역할'),
+    corrNames: findExact('교신저자명') || find('교신저자명'),
+    name:      findExact('성명') || find('성명', 'name'),
   };
 }
 
