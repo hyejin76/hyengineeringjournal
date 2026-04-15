@@ -95,7 +95,7 @@ function buildRows(json) {
     corrNames: str(r[colMap.corrNames]),
     researcherName: str(r[colMap.name]),
     status: 'pending',
-    doiDate: null, doiJournal: null,
+    doiDate: null, doiJournal: null, doiTitle: null,
     inferredRole: null, roleSource: null,
     issues: [], roleIssue: false, doiNote: ''
   }));
@@ -249,6 +249,11 @@ function applyCrossRef(row, msg) {
   // 학술지명
   if (msg['container-title'] && msg['container-title'].length) {
     row.doiJournal = msg['container-title'][0];
+  }
+
+  // 논문제목
+  if (msg.title && msg.title.length) {
+    row.doiTitle = msg.title[0];
   }
 
   // 저자 분석 (CrossRef 기반 초벌 판별)
@@ -432,6 +437,13 @@ function computeIssues(row) {
   row.issues = [];
   row.roleIssue = false;
 
+  // 논문제목 비교
+  if (row.doiTitle && row.title) {
+    if (!titleMatch(row.title, row.doiTitle)) {
+      row.issues.push('논문제목');
+    }
+  }
+
   // 발표일 비교 (연월 기준)
   if (row.doiDate && row.date) {
     const a = row.date.replace(/-/g,'').slice(0, 6);
@@ -464,6 +476,14 @@ function computeIssues(row) {
   } else {
     row.status = 'ok';
   }
+}
+
+function titleMatch(a, b) {
+  const n = s => s.toLowerCase().replace(/[^a-z0-9가-힣]/g, '');
+  const na = n(a), nb = n(b);
+  if (na === nb) return true;
+  // 70% 이상 토큰 일치
+  return tokenSim(na, nb) > 0.7;
 }
 
 function journalMatch(a, b) {
@@ -582,9 +602,20 @@ function renderRow(r) {
     issuesHtml += `<div style="color:var(--ok);font-size:11px">이상 없음</div>`;
   issuesHtml += '</div>';
 
+  // 논문제목
+  const titleMismatch = r.issues.includes('논문제목');
+  const titleCell = `
+    <div class="cell-compare">
+      <div class="paper-title ${titleMismatch ? 'mismatch' : ''}" title="${esc(r.title)}">${esc(trunc(r.title, 40))}</div>
+      <div class="cell-doi-val ${titleMismatch ? 'mismatch' : r.doiTitle ? 'match' : ''}" title="${esc(r.doiTitle||'')}">
+        ${r.doiTitle ? '▸ ' + esc(trunc(r.doiTitle, 40)) : r.status === 'checking' ? '…' : ''}
+      </div>
+      ${titleMismatch ? '<span class="mismatch-label">불일치</span>' : ''}
+    </div>`;
+
   return `<tr class="${rowClass}">
     <td class="col-no"><span class="cell-no">${r.idx}</span></td>
-    <td class="col-title"><div class="paper-title" title="${esc(r.title)}">${esc(r.title) || '—'}</div></td>
+    <td class="col-title">${titleCell}</td>
     <td class="col-doi">
       ${r.doi ? `<a class="doi-link" href="https://doi.org/${r.doi}" target="_blank" rel="noopener">${r.doi}</a>` : '—'}
     </td>
