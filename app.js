@@ -20,38 +20,91 @@ function handleFile(e) {
 
 function processFile(file) {
   const reader = new FileReader();
-  reader.onload = function (e) {
+  reader.onload = function(e) {
     try {
-      const data = new Uint8Array(e.target.result);
-      const wb = XLSX.read(data, { type: 'array' });
-      const ws = wb.Sheets[wb.SheetNames[0]];
-      const json = XLSX.utils.sheet_to_json(ws, { defval: '' });
-      if (!json.length) { alert('데이터가 없습니다.'); return; }
-
-      const colMap = detectColumns(Object.keys(json[0]));
-      rows = json.map((r, i) => ({
-        idx: i + 1,
-        title: str(r[colMap.title]),
-        doi: str(r[colMap.doi]).replace(/^https?:\/\/doi\.org\//i, '').trim(),
-        date: formatDate(r[colMap.date]),
-        journal: str(r[colMap.journal]),
-        role: str(r[colMap.role]),
-        corrNames: str(r[colMap.corrNames]),   // 교신저자명 컬럼
-        researcherName: str(r[colMap.name]),   // 성명 컬럼
-        status: 'pending',
-        doiDate: null, doiJournal: null,
-        inferredRole: null, roleSource: null,
-        issues: [], roleIssue: false, doiNote: ''
-      }));
-
-      showResults();
-      updateStats();
-      renderTable();
-    } catch (err) {
-      alert('파일 읽기 오류: ' + err.message);
+      const raw = e.target.result;
+      const head = new TextDecoder('utf-8').decode(new Uint8Array(raw, 0, Math.min(512, raw.byteLength)));
+      const isXml = head.includes('<?xml') || head.includes('schemas-microsoft-com');
+      let json;
+      if (isXml) {
+        const xmlText = new TextDecoder('utf-8').decode(new Uint8Array(raw));
+        json = parseXmlSpreadsheet(xmlText);
+      } else {
+        const wb = XLSX.read(new Uint8Array(raw), { type: 'array' });
+        const ws = wb.Sheets[wb.SheetNames[0]];
+        json = XLSX.utils.sheet_to_json(ws, { defval: '' });
+      }
+      if (!json || !json.length) { alert('데이터를 읽을 수 없습니다.'); return; }
+      buildRows(json);
+    } catch(err) {
+      alert('파일 읽기 오류: ' + (err.message || String(err)));
     }
   };
+  reader.onerror = function() { alert('파일을 열 수 없습니다.'); };
   reader.readAsArrayBuffer(file);
+}
+
+function parseXmlSpreadsheet(xmlText) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(xmlText, 'text/xml');
+  const parseErr = doc.querySelector('parsererror');
+  if (parseErr) throw new Error('XML 파싱 실패');
+  const ns = 'urn:schemas-microsoft-com:office:spreadsheet';
+  const getCell = (cell) => {
+    const d = cell.getElementsByTagNameNS(ns, 'Data')[0] || cell.getElementsByTagName('Data')[0];
+    return d ? d.textContent.trim() : '';
+  };
+  const getCellIndex = (cell) => {
+    return cell.getAttributeNS(ns, 'Index') || cell.getAttribute('ss:Index') || null;
+  };
+  const getCells = (row) => {
+    const r = row.getElementsByTagNameNS(ns, 'Cell');
+    return r.length ? r : row.getElementsByTagName('Cell');
+  };
+  let rowEls = doc.getElementsByTagNameNS(ns, 'Row');
+  if (!rowEls.length) rowEls = doc.getElementsByTagName('Row');
+  if (!rowEls.length) throw new Error('Row 데이터 없음');
+  const headers = [];
+  for (let c of getCells(rowEls[0])) {
+    const idx = getCellIndex(c);
+    if (idx) while (headers.length < parseInt(idx) - 1) headers.push('');
+    headers.push(getCell(c));
+  }
+  const json = [];
+  for (let i = 1; i < rowEls.length; i++) {
+    const obj = {};
+    let colIdx = 0;
+    for (let c of getCells(rowEls[i])) {
+      const idx = getCellIndex(c);
+      if (idx) colIdx = parseInt(idx) - 1;
+      if (headers[colIdx]) obj[headers[colIdx]] = getCell(c);
+      colIdx++;
+    }
+    if (Object.values(obj).some(v => v !== '')) json.push(obj);
+  }
+  return json;
+}
+
+function buildRows(json) {
+  const colMap = detectColumns(Object.keys(json[0]));
+  rows = json.map((r, i) => ({
+    idx: i + 1,
+    title: str(r[colMap.title]),
+    doi: str(r[colMap.doi]).replace(/^https?:\/\/doi\.org\//i, '').trim(),
+    date: formatDate(r[colMap.date]),
+    journal: str(r[colMap.journal]),
+    role: str(r[colMap.role]),
+    corrNames: str(r[colMap.corrNames]),
+    researcherName: str(r[colMap.name]),
+    status: 'pending',
+    doiDate: null, doiJournal: null,
+    inferredRole: null, roleSource: null,
+    issues: [], roleIssue: false, doiNote: ''
+  }));
+
+  showResults();
+  updateStats();
+  renderTable();
 }
 
 function str(v) { return (v || '').toString().trim(); }
