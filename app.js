@@ -93,6 +93,7 @@ function buildRows(json) {
     journal: str(r[colMap.journal]),
     role: str(r[colMap.role]),
     corrNames: str(r[colMap.corrNames]),
+    corrCount: parseInt(str(r[colMap.corrCount])) || 0,
     researcherName: str(r[colMap.name]),
     status: 'pending',
     doiDate: null, doiJournal: null, doiTitle: null,
@@ -119,6 +120,7 @@ function detectColumns(keys) {
     journal:   findExact('학술지명') || find('학술지명', 'journal'),
     role:      findExact('참여형태') || find('참여형태', '역할'),
     corrNames: findExact('교신저자명') || find('교신저자명'),
+    corrCount: findExact('교신저자수') || find('교신저자수'),
     name:      findExact('성명') || find('성명', 'name'),
   };
 }
