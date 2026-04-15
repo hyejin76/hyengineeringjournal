@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>연구실적 DOI 검증 시스템</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">◈</span>
+        <div>
+          <div class="logo-title">연구실적 DOI 검증</div>
+          <div class="logo-sub">Research Output Verification System</div>
+        </div>
+      </div>
+      <nav class="header-actions">
+        <button class="btn-ghost" id="btnHelp" onclick="toggleHelp()">사용법</button>
+        <button class="btn-ghost" id="btnExport" disabled onclick="exportCSV()">CSV 내보내기</button>
+        <button class="btn-primary" id="btnVerifyAll" disabled onclick="verifyAll()">
+          <span class="btn-icon">▶</span> 전체 검증 시작
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HELP PANEL -->
+  <div class="help-panel" id="helpPanel" style="display:none">
+    <div class="help-inner">
+      <h3>사용법 안내</h3>
+      <div class="help-grid">
+        <div class="help-step"><span class="step-num">01</span><strong>파일 업로드</strong><p>DOI 컬럼이 포함된 .xls / .xlsx 연구실적 파일을 업로드합니다.</p></div>
+        <div class="help-step"><span class="step-num">02</span><strong>전체 검증 시작</strong><p>CrossRef + PubMed API를 통해 DOI별로 발표일, 학술지명, 참여형태를 자동 검증합니다.</p></div>
+        <div class="help-step"><span class="step-num">03</span><strong>결과 확인</strong><p>불일치 항목은 강조 표시됩니다. 필터로 불일치 항목만 추려 확인하세요.</p></div>
+        <div class="help-step"><span class="step-num">04</span><strong>CSV 내보내기</strong><p>검증 결과를 CSV로 저장하여 보고서로 활용할 수 있습니다.</p></div>
+      </div>
+      <div class="help-note">
+        <strong>참여형태 판별 기준</strong><br>
+        CrossRef(저자 순서) + PubMed(교신저자 플래그) + 엑셀 내 교신저자명 컬럼을 교차 분석합니다.<br>
+        · <b>제1저자</b>: 저자목록 첫 번째 &amp; sequence=first<br>
+        · <b>교신저자</b>: PubMed corresp 플래그 또는 교신저자명 컬럼에 해당 연구자 단독 포함<br>
+        · <b>공동교신저자</b>: 교신저자명 컬럼에 2인 이상 포함 또는 PubMed EqualContrib<br>
+        · <b>참여자</b>: 위 조건 미해당 (제2저자 이하)
+      </div>
+      <button class="btn-ghost" onclick="toggleHelp()" style="margin-top:1rem">닫기</button>
+    </div>
+  </div>
+
+  <main class="main">
+
+    <!-- UPLOAD ZONE -->
+    <div class="upload-section" id="uploadSection">
+      <div class="upload-zone" id="dropZone"
+        onclick="document.getElementById('fileInput').click()"
+        ondragover="event.preventDefault();this.classList.add('drag')"
+        ondragleave="this.classList.remove('drag')"
+        ondrop="handleDrop(event)">
+        <div class="upload-icon">⬡</div>
+        <div class="upload-title">엑셀 파일을 드래그하거나 클릭하여 업로드</div>
+        <div class="upload-sub">.xls · .xlsx 형식 지원 &nbsp;|&nbsp; DOI 컬럼 필수</div>
+        <div class="upload-formats">
+          <span>연구실적번호</span><span>DOI</span><span>발표일</span><span>학술지명</span><span>참여형태</span><span>교신저자명</span>
+        </div>
+        <input type="file" id="fileInput" accept=".xls,.xlsx" onchange="handleFile(event)">
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-bar" id="statsBar" style="display:none">
+      <div class="stat-item">
+        <div class="stat-val" id="s-total">0</div>
+        <div class="stat-label">전체 실적</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item ok">
+        <div class="stat-val" id="s-ok">0</div>
+        <div class="stat-label">검증 일치</div>
+      </div>
+      <div class="stat-item fail">
+        <div class="stat-val" id="s-fail">0</div>
+        <div class="stat-label">불일치</div>
+      </div>
+      <div class="stat-item warn">
+        <div class="stat-val" id="s-warn">0</div>
+        <div class="stat-label">미검증</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item role-mismatch">
+        <div class="stat-val" id="s-role">0</div>
+        <div class="stat-label">참여형태 불일치</div>
+      </div>
+      <div class="progress-wrap" id="progressWrap" style="display:none">
+        <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+        <div class="progress-label" id="progressLabel">0 / 0</div>
+      </div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="controls-bar" id="ctrlBar" style="display:none">
+      <div class="controls-left">
+        <select id="filterStatus" onchange="renderTable()">
+          <option value="">전체 상태</option>
+          <option value="ok">✓ 일치</option>
+          <option value="fail">✗ 불일치</option>
+          <option value="role_only">⚑ 참여형태 불일치</option>
+          <option value="warn">– 미검증</option>
+          <option value="pending">○ 대기중</option>
+        </select>
+        <input type="text" id="searchInput" placeholder="논문제목 · DOI 검색" oninput="renderTable()">
+      </div>
+      <div class="controls-right">
+        <span class="row-count" id="rowCount"></span>
+        <button class="btn-ghost sm" onclick="resetFile()">파일 변경</button>
+      </div>
+    </div>
+
+    <!-- TABLE -->
+    <div class="table-section" id="tableSection" style="display:none">
+      <div class="table-scroll">
+        <table id="mainTable">
+          <thead>
+            <tr>
+              <th class="col-no">#</th>
+              <th class="col-title">논문제목</th>
+              <th class="col-doi">DOI</th>
+              <th class="col-date">발표일<br><span class="th-sub">원본 / DOI</span></th>
+              <th class="col-journal">학술지명<br><span class="th-sub">원본 / DOI</span></th>
+              <th class="col-role">참여형태<br><span class="th-sub">원본 / 판별</span></th>
+              <th class="col-corr">교신저자명<br><span class="th-sub">원본</span></th>
+              <th class="col-status">검증결과</th>
+              <th class="col-issues">불일치 항목</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">◈</div>
+      <div class="empty-title">연구실적 파일을 업로드하세요</div>
+      <div class="empty-sub">DOI가 포함된 엑셀 파일을 업로드하면<br>발표일 · 학술지명 · 참여형태를 자동으로 검증합니다</div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>CrossRef API + PubMed API 기반 검증</span>
+    <span class="footer-sep">·</span>
+    <span>데이터는 브라우저에서만 처리되며 서버로 전송되지 않습니다</span>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
