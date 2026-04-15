@@ -174,7 +174,7 @@ select:focus, input[type="text"]:focus { border-color: var(--accent); }
 }
 .table-scroll { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
-thead { position: sticky; top: 57px; z-index: 10; }
+thead { position: sticky; top: 53px; z-index: 10; }
 th {
   background: var(--bg3); padding: 10px 12px; text-align: left;
   font-weight: 500; font-size: 11px; color: var(--text2);
