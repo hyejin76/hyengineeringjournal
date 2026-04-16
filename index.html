@@ -47,8 +47,9 @@
         <strong>참여형태 판별 기준</strong><br>
         CrossRef(저자 순서) + PubMed(교신저자 플래그) + 엑셀 내 교신저자명 컬럼을 교차 분석합니다.<br>
         · <b>제1저자</b>: 저자목록 첫 번째 &amp; sequence=first<br>
-        · <b>교신저자</b>: PubMed corresp 플래그 또는 교신저자명 컬럼에 해당 연구자 단독 포함<br>
-        · <b>공동교신저자</b>: 교신저자명 컬럼에 2인 이상 포함 또는 PubMed EqualContrib<br>
+        · <b>교신저자</b>: PubMed corresp 플래그 (PubMed 등재 논문만)<br>
+        · <b>공동교신저자</b>: PubMed EqualContrib 플래그 (PubMed 등재 논문만)<br>
+        · <b>검증불가</b>: PubMed 미등재 논문 (Scopus 전용 등) — 불일치 미표시<br>
         · <b>참여자</b>: 위 조건 미해당 (제2저자 이하)
       </div>
       <button class="btn-ghost" onclick="toggleHelp()" style="margin-top:1rem">닫기</button>
@@ -93,7 +94,7 @@
       </div>
       <div class="settings-note" style="margin-top:1rem">
         <strong>참여형태 판별 우선순위</strong><br>
-        <code>① 교신저자명 컬럼 (엑셀) → ② PubMed corresp 플래그 → ③ CrossRef 저자순서</code>
+        <code>① PubMed corresp/EqualContrib 플래그 → ② CrossRef 저자순서 (제1저자/참여자만)</code>
       </div>
       <button class="btn-ghost" onclick="toggleSettings()" style="margin-top:1rem">닫기</button>
     </div>
@@ -191,7 +192,7 @@
               <th class="col-authors">저자수<br><span class="th-sub">원본 / DOI</span></th>
               <th class="col-journal">학술지명<br><span class="th-sub">원본 / DOI</span></th>
               <th class="col-role">참여형태<br><span class="th-sub">원본 / 판별</span></th>
-              <th class="col-corr">교신저자명<br><span class="th-sub">원본</span></th>
+
               <th class="col-status">검증결과</th>
               <th class="col-issues">불일치 항목</th>
             </tr>
