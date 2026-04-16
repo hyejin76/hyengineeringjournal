@@ -12,9 +12,28 @@ let scopusCache = {};   // SCOPUS ID → 영문명 캐시 (세션 내)
 function toggleSettings() {
   const p = document.getElementById('settingsPanel');
   p.style.display = p.style.display === 'none' ? 'block' : 'none';
-  // 저장된 키 복원
-  const saved = localStorage.getItem('scopusApiKey');
-  if (saved) document.getElementById('scopusApiKey').value = saved;
+  // 저장된 검증 대상자 이름 복원
+  const savedName = localStorage.getItem('targetName');
+  if (savedName) {
+    document.getElementById('targetName').value = savedName;
+    showTargetStatus(`✓ "${savedName}" 설정됨`, 'ok');
+  }
+}
+
+function saveTargetName() {
+  const name = document.getElementById('targetName').value.trim();
+  if (!name) { showTargetStatus('이름을 입력하세요.', 'fail'); return; }
+  localStorage.setItem('targetName', name);
+  showTargetStatus(`✓ "${name}" 저장됨`, 'ok');
+}
+
+function getTargetName() {
+  return localStorage.getItem('targetName') || '';
+}
+
+function showTargetStatus(msg, cls) {
+  const el = document.getElementById('targetNameStatus');
+  if (el) { el.textContent = msg; el.className = 'settings-status ' + cls; }
 }
 
 function saveScopusKey() {
@@ -230,6 +249,11 @@ function buildRows(json) {
     issues: [], roleIssue: false, doiNote: ''
   }));
 
+  // 검증 대상자 설정된 경우 모든 행에 적용
+  const targetName = getTargetName();
+  if (targetName) {
+    rows.forEach(r => { r.researcherName = targetName; });
+  }
   showResults();
   updateStats();
   renderTable();
@@ -332,21 +356,18 @@ function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 /* ── 단건 검증 ── */
 async function verifyRow(row) {
   try {
-    // 0. researchers.json에서 영문명 조회
-    const researcher = findResearcher(row.researcherName);
-    if (researcher) {
-      // researchers.json에 familyName이 이미 있으면 바로 사용
-      if (researcher.familyName) {
-        row._engName = {
-          family: researcher.familyName,
-          given:  researcher.givenName || ''
-        };
-      }
-      // Scopus API Key가 있으면 추가로 실시간 조회 (선택적)
-      else if (researcher.scopusId && getScopusKey()) {
-        const engName = await fetchScopusName(researcher.scopusId);
-        if (engName) row._engName = engName;
-      }
+    // 0. 영문명 조회 — 설정의 검증대상자 이름 또는 엑셀 성명 컬럼 사용
+    const targetName = getTargetName();
+    const lookupName = targetName || row.researcherName;
+    const researcher = findResearcher(lookupName);
+    if (researcher && researcher.familyName) {
+      row._engName = {
+        family: researcher.familyName,
+        given:  researcher.givenName || ''
+      };
+    } else if (!researcher && lookupName) {
+      // researchers.json에 없으면 엑셀 성명을 그대로 researcherName으로 사용
+      row._lookupName = lookupName;
     }
 
     // 1. CrossRef
@@ -583,7 +604,8 @@ function applyPubMed(row, pmData) {
 
 /* ── 엑셀 내부 데이터 기반 참여형태 판별 (핵심 로직) ── */
 function inferRoleFromCorrNames(row) {
-  const myName = row.researcherName.replace(/\s/g, '');
+  const targetName = getTargetName();
+  const myName = (targetName || row.researcherName).replace(/\s/g, '');
   if (!myName) return;
 
   // 교신저자명 파싱: "윤종승, 선양국" 형태
@@ -626,18 +648,9 @@ function inferRoleFromCorrNames(row) {
 
   } else {
     // 교신저자명 컬럼이 비어있음
-    if (row._authorIdx >= 0) {
-      // CrossRef 저자 매칭은 됐지만 교신여부 불명
-      // → 원본 참여형태를 신뢰하고 검증 패스 처리
-      if (isFirst) {
-        row.inferredRole = '제1저자(교신불명)';
-      } else {
-        // 저자 목록에 있음 → 원본 참여형태 그대로 신뢰
-        row.inferredRole = row.role || '참여자(교신불명)';
-      }
-      row.roleSource = 'CrossRef (교신자 미확인, 원본신뢰)';
-    }
-    // authorIdx = -1 이면 저자 매칭 자체 실패 → null 유지
+    // → 원본 참여형태(엑셀 기재값)를 그대로 신뢰하고 불일치 판정 안 함
+    row.inferredRole = row.role || null;
+    row.roleSource = '원본신뢰 (교신자명 미기재)';
   }
 }
 
@@ -714,7 +727,8 @@ function tokenSim(a, b) {
 
 function roleMatch(recorded, inferred) {
   if (!recorded || !inferred) return true; // 판별 불가 → 불일치 미표시
-  // 교신여부불명인 경우 → 교신저자 계열 기록과는 불일치 판정 안 함
+  // 원본 신뢰 케이스 → 불일치 판정 안 함
+  if (inferred === recorded) return true;
   if (inferred.includes('불명')) return true;
   const normalize = s => s.toLowerCase()
     .replace(/\s+/g,'')
@@ -854,14 +868,16 @@ function renderRoleCell(r) {
 
   const origBadge  = `<span class="role-badge ${origClass}">${orig}</span>`;
   const isUnknown = inferred && inferred.includes('불명');
+  const isTrustedRole = source && source.includes('원본신뢰');
   const inferBadge = inferred && inferred !== 'checking'
-    ? `<span class="role-badge ${isUnknown ? 'unknown' : roleClass}" style="${isUnknown ? 'opacity:0.6' : ''}">${inferred.replace('(교신여부불명)', '')} ${isUnknown ? '<span style="font-size:9px;opacity:0.7">(교신불명)</span>' : ''}</span>`
+    ? `<span class="role-badge ${isTrustedRole ? origClass : (isUnknown ? 'unknown' : roleClass)}" style="opacity:${isTrustedRole ? '0.75' : '1'}">${inferred} ${isTrustedRole ? '<span style="font-size:9px;opacity:0.7">(원본)</span>' : ''}</span>`
     : inferred === 'checking'
     ? `<span class="role-badge checking">조회중…</span>`
     : `<span style="font-size:11px;color:var(--text3);background:var(--bg3);padding:2px 8px;border-radius:20px;">판별불가</span>`;
 
+  const isTrusted = source && source.includes('원본신뢰');
   const sourceLabel = source
-    ? `<span style="font-size:10px;color:var(--text3)">${source}</span>`
+    ? `<span style="font-size:10px;color:${isTrusted ? 'var(--warn)' : 'var(--text3)'}">${source}</span>`
     : `<span style="font-size:10px;color:var(--text3)">교신저자명 없음</span>`;
 
   const mismatchFlag = mismatch
