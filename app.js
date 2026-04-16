@@ -73,14 +73,36 @@ function loadResearchers(e) {
   reader.readAsText(file);
 }
 
-// 페이지 로드 시 저장된 연구자 DB 복원
+// 페이지 로드 시 researchers.json 자동 로드 (같은 저장소에서)
 (function initSettings() {
+  // 1. 먼저 로컬스토리지에서 복원 시도
   const saved = localStorage.getItem('researchers');
   if (saved) {
     try {
       researchers = JSON.parse(saved);
+      console.log(`researchers.json 로컬 캐시 로드: ${researchers.length}명`);
     } catch(e) {}
   }
+  // 2. GitHub 저장소에서 최신 researchers.json 자동 로드
+  fetch('researchers.json')
+    .then(r => r.ok ? r.json() : null)
+    .then(data => {
+      if (data && data.length) {
+        researchers = data;
+        // 로컬스토리지 크기 제한 대비 — 실패해도 무시
+        try { localStorage.setItem('researchers', JSON.stringify(data)); } catch(e) {}
+        console.log(`researchers.json 자동 로드 완료: ${researchers.length}명`);
+        // 설정 패널 상태 업데이트
+        const el = document.getElementById('researchersStatus');
+        if (el) {
+          el.textContent = `✓ ${researchers.length}명 자동 로드됨 (researchers.json)`;
+          el.className = 'settings-status ok';
+        }
+      }
+    })
+    .catch(() => {
+      console.log('researchers.json 자동 로드 실패 — 설정에서 수동 업로드 필요');
+    });
 })();
 
 /* ── SCOPUS API ── */
@@ -310,11 +332,21 @@ function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 /* ── 단건 검증 ── */
 async function verifyRow(row) {
   try {
-    // 0. Scopus → 영문명 조회 (researchers.json + API Key 있을 때)
+    // 0. researchers.json에서 영문명 조회
     const researcher = findResearcher(row.researcherName);
-    if (researcher && researcher.scopusId) {
-      const engName = await fetchScopusName(researcher.scopusId);
-      if (engName) row._engName = engName;
+    if (researcher) {
+      // researchers.json에 familyName이 이미 있으면 바로 사용
+      if (researcher.familyName) {
+        row._engName = {
+          family: researcher.familyName,
+          given:  researcher.givenName || ''
+        };
+      }
+      // Scopus API Key가 있으면 추가로 실시간 조회 (선택적)
+      else if (researcher.scopusId && getScopusKey()) {
+        const engName = await fetchScopusName(researcher.scopusId);
+        if (engName) row._engName = engName;
+      }
     }
 
     // 1. CrossRef
@@ -593,14 +625,17 @@ function inferRoleFromCorrNames(row) {
     }
 
   } else {
-    // 교신저자명 컬럼이 비어있음 → CrossRef 저자순서만으로 부분 판별
-    // (교신저자 여부는 알 수 없으므로 제1저자/참여자만 구분)
-    if (isFirst) {
-      row.inferredRole = '제1저자(교신여부불명)';
-      row.roleSource = 'CrossRef (교신자 미확인)';
-    } else if (row._authorIdx >= 0) {
-      row.inferredRole = '참여자(교신여부불명)';
-      row.roleSource = 'CrossRef (교신자 미확인)';
+    // 교신저자명 컬럼이 비어있음
+    if (row._authorIdx >= 0) {
+      // CrossRef 저자 매칭은 됐지만 교신여부 불명
+      // → 원본 참여형태를 신뢰하고 검증 패스 처리
+      if (isFirst) {
+        row.inferredRole = '제1저자(교신불명)';
+      } else {
+        // 저자 목록에 있음 → 원본 참여형태 그대로 신뢰
+        row.inferredRole = row.role || '참여자(교신불명)';
+      }
+      row.roleSource = 'CrossRef (교신자 미확인, 원본신뢰)';
     }
     // authorIdx = -1 이면 저자 매칭 자체 실패 → null 유지
   }
