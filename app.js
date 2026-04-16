@@ -31,6 +31,64 @@ function getTargetName() {
   return localStorage.getItem('targetName') || '';
 }
 
+/* ── 업적평가 기간 ── */
+function initEvalYear() {
+  const sel = document.getElementById('evalYear');
+  if (!sel) return;
+  const cur = new Date().getFullYear();
+  for (let y = cur; y >= cur - 10; y--) {
+    const opt = document.createElement('option');
+    opt.value = y; opt.textContent = y + '년';
+    sel.appendChild(opt);
+  }
+  // 저장된 값 복원
+  const saved = JSON.parse(localStorage.getItem('evalPeriod') || '{}');
+  if (saved.type) document.getElementById('evalType').value = saved.type;
+  if (saved.year) sel.value = saved.year;
+  updateEvalDisplay();
+}
+
+function saveEvalPeriod() {
+  const type = document.getElementById('evalType').value;
+  const year = parseInt(document.getElementById('evalYear').value);
+  localStorage.setItem('evalPeriod', JSON.stringify({type, year}));
+  updateEvalDisplay();
+}
+
+function updateEvalDisplay() {
+  const p = getEvalPeriod();
+  if (!p) return;
+  const el = document.getElementById('evalPeriodDisplay');
+  if (el) el.textContent = `${p.start} ~ ${p.end}`;
+}
+
+function getEvalPeriod() {
+  const saved = JSON.parse(localStorage.getItem('evalPeriod') || '{}');
+  const type = saved.type || 'first';
+  const year = saved.year || new Date().getFullYear();
+  if (type === 'first') {
+    return { start: `${year}-01-01`, end: `${year}-12-31`, label: `${year}년 전반기` };
+  } else {
+    // 후반기: 전년도 7/1 ~ 당해 6/30
+    return { start: `${year-1}-07-01`, end: `${year}-06-30`, label: `${year}년 후반기` };
+  }
+}
+
+function checkPeriod(doiDate) {
+  if (!doiDate) return null;
+  const p = getEvalPeriod();
+  if (!p) return null;
+  // 날짜를 YYYYMMDD 숫자로 비교
+  const toNum = s => parseInt(s.replace(/-/g,'').slice(0,8).padEnd(8,'0'));
+  const d = toNum(doiDate);
+  const start = toNum(p.start);
+  const end = toNum(p.end);
+  return { inPeriod: d >= start && d <= end, period: p.label, date: doiDate };
+}
+
+// 페이지 로드 시 연도 초기화
+document.addEventListener('DOMContentLoaded', initEvalYear);
+
 function showTargetStatus(msg, cls) {
   const el = document.getElementById('targetNameStatus');
   if (el) { el.textContent = msg; el.className = 'settings-status ' + cls; }
@@ -242,9 +300,10 @@ function buildRows(json) {
     role: str(r[colMap.role]),
     corrNames: str(r[colMap.corrNames]),
     corrCount: parseInt(str(r[colMap.corrCount])) || 0,
+    authorCount: parseInt(str(r[colMap.authorCount])) || 0,
     researcherName: str(r[colMap.name]),
     status: 'pending',
-    doiDate: null, doiJournal: null, doiTitle: null,
+    doiDate: null, doiJournal: null, doiTitle: null, doiAuthorCount: null, doiAuthorCount: null, doiAuthorCount: null, doiAllDates: [], periodResult: null,
     inferredRole: null, roleSource: null,
     issues: [], roleIssue: false, doiNote: ''
   }));
@@ -272,9 +331,10 @@ function detectColumns(keys) {
     date:      findExact('발표일') || find('발표일'),
     journal:   findExact('학술지명') || find('학술지명', 'journal'),
     role:      findExact('참여형태') || find('참여형태', '역할'),
-    corrNames: findExact('교신저자명') || find('교신저자명'),
-    corrCount: findExact('교신저자수') || find('교신저자수'),
-    name:      findExact('성명') || find('성명', 'name'),
+    corrNames:   findExact('교신저자명') || find('교신저자명'),
+    corrCount:   findExact('교신저자수') || find('교신저자수'),
+    authorCount: findExact('참여자수') || find('참여자수'),
+    name:        findExact('성명') || find('성명', 'name'),
   };
 }
 
@@ -424,13 +484,28 @@ async function fetchCrossRef(doi) {
 }
 
 function applyCrossRef(row, msg) {
-  // 발표일
-  const dp = msg['published-print'] || msg['published-online'] || msg['published'] || msg['created'];
-  if (dp && dp['date-parts'] && dp['date-parts'][0]) {
+  // 발표일 — published-print 우선, 없으면 published-online
+  // (early access / online first는 평가기준 날짜로 인정하지 않음)
+  const toDateStr = (dp) => {
+    if (!dp || !dp['date-parts'] || !dp['date-parts'][0]) return null;
     const [y, m, d] = dp['date-parts'][0];
-    row.doiDate = [y, m ? String(m).padStart(2,'0') : null, d ? String(d).padStart(2,'0') : null]
-      .filter(Boolean).join('-');
-  }
+    if (!y) return null;
+    return [y, m ? String(m).padStart(2,'0') : null, d ? String(d).padStart(2,'0') : null].filter(Boolean).join('-');
+  };
+  const printDate  = toDateStr(msg['published-print']);
+  const onlineDate = toDateStr(msg['published-online']);
+  const pubDate    = toDateStr(msg['published']);
+
+  // 평가기준: print > online > published 순서 우선
+  row.doiDate = printDate || onlineDate || pubDate || null;
+  row.doiPrintDate  = printDate;
+  row.doiOnlineDate = onlineDate;
+  // 표시용 전체 날짜
+  row.doiAllDates = [printDate, onlineDate].filter(Boolean);
+
+  // 저자수
+  const authors = msg.author || [];
+  row.doiAuthorCount = authors.length;
 
   // 학술지명
   if (msg['container-title'] && msg['container-title'].length) {
@@ -443,7 +518,6 @@ function applyCrossRef(row, msg) {
   }
 
   // 저자 분석 (CrossRef 기반 초벌 판별)
-  const authors = msg.author || [];
   row._crossrefAuthors = authors;
 
   if (!authors.length) return;
@@ -666,12 +740,24 @@ function computeIssues(row) {
     }
   }
 
-  // 발표일 비교 (연월 기준)
-  if (row.doiDate && row.date) {
-    const a = row.date.replace(/-/g,'').slice(0, 6);
-    const b = row.doiDate.replace(/-/g,'').slice(0, 6);
-    if (a !== b) row.issues.push('발표일');
+  // 업적평가 기간 검증 (published-print 기준, 없으면 online)
+  const evalDate = row.doiPrintDate || row.doiOnlineDate || row.doiDate;
+  if (evalDate) {
+    const pr = checkPeriod(evalDate);
+    row.periodResult = pr;
+    if (pr && !pr.inPeriod) {
+      row.issues.push('평가기간외');
+    }
   }
+
+  // 저자수 비교
+  if (row.doiAuthorCount !== null && row.authorCount > 0) {
+    if (row.doiAuthorCount !== row.authorCount) {
+      row.issues.push('저자수');
+    }
+  }
+
+  // 발표일 비교는 제거 (업적평가 기간으로 대체)
 
   // 학술지명 비교
   if (row.doiJournal && row.journal) {
@@ -747,16 +833,22 @@ function roleMatch(recorded, inferred) {
 
 /* ── 통계 갱신 ── */
 function updateStats() {
-  const total = rows.length;
-  const ok    = rows.filter(r => r.status === 'ok').length;
-  const fail  = rows.filter(r => r.status === 'fail').length;
-  const warn  = rows.filter(r => ['warn','pending','checking'].includes(r.status)).length;
-  const role  = rows.filter(r => r.roleIssue).length;
+  const total   = rows.length;
+  const ok      = rows.filter(r => r.status === 'ok').length;
+  const fail    = rows.filter(r => r.status === 'fail').length;
+  const warn    = rows.filter(r => ['warn','pending','checking'].includes(r.status)).length;
+  const role    = rows.filter(r => r.roleIssue).length;
+  const period  = rows.filter(r => r.periodResult && !r.periodResult.inPeriod).length;
+  const authors = rows.filter(r => r.doiAuthorCount !== null && r.authorCount > 0 && r.doiAuthorCount !== r.authorCount).length;
   document.getElementById('s-total').textContent = total;
   document.getElementById('s-ok').textContent = ok;
   document.getElementById('s-fail').textContent = fail;
   document.getElementById('s-warn').textContent = warn;
   document.getElementById('s-role').textContent = role;
+  const ps = document.getElementById('s-period');
+  const as = document.getElementById('s-authors');
+  if (ps) ps.textContent = period;
+  if (as) as.textContent = authors;
 }
 
 /* ── 테이블 렌더링 ── */
@@ -766,7 +858,9 @@ function renderTable() {
 
   let filtered = rows.filter(r => {
     if (filter === 'role_only' && !r.roleIssue) return false;
-    if (filter && filter !== 'role_only' && r.status !== filter) return false;
+    if (filter === 'period_out' && !(r.periodResult && !r.periodResult.inPeriod)) return false;
+    if (filter === 'author_mismatch' && !(r.doiAuthorCount !== null && r.authorCount > 0 && r.doiAuthorCount !== r.authorCount)) return false;
+    if (filter && !['role_only','period_out','author_mismatch'].includes(filter) && r.status !== filter) return false;
     if (search && !r.title.toLowerCase().includes(search) && !r.doi.toLowerCase().includes(search)) return false;
     return true;
   });
@@ -784,6 +878,31 @@ function renderTable() {
 
 function renderRow(r) {
   const rowClass = r.status === 'fail' ? 'row-fail' : r.roleIssue ? 'row-role' : '';
+
+  // 평가기간 셀
+  let periodCell = '—';
+  if (r.periodResult) {
+    const pr = r.periodResult;
+    const cls = pr.inPeriod ? 'ok' : 'fail';
+    const icon = pr.inPeriod ? '✓' : '✗';
+    periodCell = `<div style="font-size:11px">
+      <div class="period-badge ${cls}">${icon} ${pr.inPeriod ? '기간 내' : '기간 외'}</div>
+      <div style="color:var(--text3);margin-top:2px">${pr.date}</div>
+      <div style="color:var(--text3)">${pr.period}</div>
+    </div>`;
+  } else if (r.doiDate) {
+    periodCell = `<span class="period-badge none">미설정</span>`;
+  }
+
+  // 저자수 셀
+  const authorMismatch = r.issues.includes('저자수');
+  const authorCell = `<div class="cell-compare">
+    <div class="cell-orig">${r.authorCount || '—'}</div>
+    <div class="cell-doi-val ${authorMismatch ? 'mismatch' : r.doiAuthorCount ? 'match' : ''}">
+      ${r.doiAuthorCount !== null ? '▸ ' + r.doiAuthorCount : r.status === 'checking' ? '…' : '—'}
+    </div>
+    ${authorMismatch ? '<span class="mismatch-label">불일치</span>' : ''}
+  </div>`;
 
   // 발표일
   const dateMismatch = r.issues.includes('발표일');
@@ -849,6 +968,8 @@ function renderRow(r) {
       ${r.doi ? `<a class="doi-link" href="https://doi.org/${r.doi}" target="_blank" rel="noopener">${r.doi}</a>` : '—'}
     </td>
     <td class="col-date">${dateCell}</td>
+    <td class="col-period">${periodCell}</td>
+    <td class="col-authors">${authorCell}</td>
     <td class="col-journal">${journalCell}</td>
     <td class="col-role">${roleCell}</td>
     <td class="col-corr"><div style="font-size:11px;color:var(--text3)">${r.corrNames || '—'}</div></td>
@@ -917,7 +1038,7 @@ function esc(s) {
 
 /* ── CSV 내보내기 ── */
 function exportCSV() {
-  const headers = ['#','논문제목','DOI','발표일(원본)','발표일(DOI조회)','학술지명(원본)','학술지명(DOI조회)',
+  const headers = ['#','논문제목','DOI','최초출판일(DOI)','평가기간포함여부','저자수(원본)','저자수(DOI)','학술지명(원본)','학술지명(DOI조회)',
     '참여형태(원본)','참여형태(판별)','판별근거','교신저자명(원본)','검증결과','불일치항목'];
   const lines = [headers.join(',')];
   rows.forEach(r => {
@@ -927,8 +1048,10 @@ function exportCSV() {
       r.idx,
       `"${r.title.replace(/"/g,'""')}"`,
       r.doi,
-      r.date,
       r.doiDate || '',
+      r.periodResult ? (r.periodResult.inPeriod ? '기간내' : '기간외') : '',
+      r.authorCount || '',
+      r.doiAuthorCount !== null ? r.doiAuthorCount : '',
       `"${r.journal.replace(/"/g,'""')}"`,
       `"${(r.doiJournal||'').replace(/"/g,'""')}"`,
       r.role,
