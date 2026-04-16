@@ -385,8 +385,25 @@ async function verifyAll() {
   const toVerify = rows.filter(r => r.doi);
   for (let i = 0; i < toVerify.length; i++) {
     const r = toVerify[i];
+    // 이전 검증 결과 완전 초기화
     r.status = 'checking';
     r.inferredRole = 'checking';
+    r.doiDate = null;
+    r.doiPrintDate = null;
+    r.doiOnlineDate = null;
+    r.doiJournal = null;
+    r.doiTitle = null;
+    r.doiAuthorCount = null;
+    r.doiAllDates = [];
+    r.periodResult = null;
+    r.issues = [];
+    r.roleIssue = false;
+    r.doiNote = '';
+    r._engName = null;
+    r._authorIdx = -1;
+    r._firstAuthor = false;
+    r._pmAuthorIdx = -1;
+    r.roleSource = null;
     renderTable();
     await verifyRow(r);
     const pct = Math.round((i + 1) / toVerify.length * 100);
