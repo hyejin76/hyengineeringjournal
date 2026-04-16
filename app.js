@@ -5,6 +5,113 @@
 let rows = [];
 let verifying = false;
 let verifyQueue = [];
+let researchers = [];   // researchers.json 로드 데이터
+let scopusCache = {};   // SCOPUS ID → 영문명 캐시 (세션 내)
+
+/* ── 설정 패널 ── */
+function toggleSettings() {
+  const p = document.getElementById('settingsPanel');
+  p.style.display = p.style.display === 'none' ? 'block' : 'none';
+  // 저장된 키 복원
+  const saved = localStorage.getItem('scopusApiKey');
+  if (saved) document.getElementById('scopusApiKey').value = saved;
+}
+
+function saveScopusKey() {
+  const key = document.getElementById('scopusApiKey').value.trim();
+  if (!key) { showKeyStatus('API Key를 입력하세요.', 'fail'); return; }
+  localStorage.setItem('scopusApiKey', key);
+  showKeyStatus('✓ 저장되었습니다.', 'ok');
+}
+
+async function testScopusKey() {
+  const key = getScopusKey();
+  if (!key) { showKeyStatus('API Key를 먼저 입력하고 저장하세요.', 'fail'); return; }
+  showKeyStatus('연결 테스트 중...', 'loading');
+  try {
+    const res = await fetch(
+      'https://api.elsevier.com/content/author/author_id/7201711855?field=preferred-name',
+      { headers: { 'X-ELS-APIKey': key, 'Accept': 'application/json' } }
+    );
+    if (res.ok) {
+      showKeyStatus('✓ 연결 성공! Scopus API를 사용할 수 있습니다.', 'ok');
+    } else {
+      showKeyStatus(`✗ 연결 실패 (${res.status}) — API Key를 확인해주세요.`, 'fail');
+    }
+  } catch(e) {
+    showKeyStatus('✗ 네트워크 오류: ' + e.message, 'fail');
+  }
+}
+
+function showKeyStatus(msg, cls) {
+  const el = document.getElementById('scopusKeyStatus');
+  el.textContent = msg;
+  el.className = 'settings-status ' + cls;
+}
+
+function getScopusKey() {
+  return localStorage.getItem('scopusApiKey') || '';
+}
+
+function loadResearchers(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    try {
+      researchers = JSON.parse(ev.target.result);
+      const el = document.getElementById('researchersStatus');
+      el.textContent = `✓ ${researchers.length}명 로드됨`;
+      el.className = 'settings-status ok';
+      localStorage.setItem('researchers', JSON.stringify(researchers));
+    } catch(err) {
+      const el = document.getElementById('researchersStatus');
+      el.textContent = '✗ JSON 파싱 오류: ' + err.message;
+      el.className = 'settings-status fail';
+    }
+  };
+  reader.readAsText(file);
+}
+
+// 페이지 로드 시 저장된 연구자 DB 복원
+(function initSettings() {
+  const saved = localStorage.getItem('researchers');
+  if (saved) {
+    try {
+      researchers = JSON.parse(saved);
+    } catch(e) {}
+  }
+})();
+
+/* ── SCOPUS API ── */
+function findResearcher(nameKo) {
+  if (!nameKo || !researchers.length) return null;
+  const name = nameKo.replace(/\s/g, '');
+  return researchers.find(r => r.nameKo && r.nameKo.replace(/\s/g, '') === name) || null;
+}
+
+async function fetchScopusName(scopusId) {
+  if (!scopusId) return null;
+  if (scopusCache[scopusId]) return scopusCache[scopusId];
+  const key = getScopusKey();
+  if (!key) return null;
+  try {
+    const res = await fetch(
+      `https://api.elsevier.com/content/author/author_id/${scopusId}?field=preferred-name`,
+      { headers: { 'X-ELS-APIKey': key, 'Accept': 'application/json' } }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    const pref = data['author-retrieval-response']?.[0]?.['author-profile']?.['preferred-name'];
+    if (!pref) return null;
+    const result = {
+      family: (pref['surname'] || '').trim(),
+      given:  (pref['given-name'] || '').trim(),
+    };
+    scopusCache[scopusId] = result;
+    return result;
+  } catch { return null; }
+}
 
 /* ── 파일 처리 ── */
 function handleDrop(e) {
@@ -203,6 +310,13 @@ function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 /* ── 단건 검증 ── */
 async function verifyRow(row) {
   try {
+    // 0. Scopus → 영문명 조회 (researchers.json + API Key 있을 때)
+    const researcher = findResearcher(row.researcherName);
+    if (researcher && researcher.scopusId) {
+      const engName = await fetchScopusName(researcher.scopusId);
+      if (engName) row._engName = engName;
+    }
+
     // 1. CrossRef
     const crossrefData = await fetchCrossRef(row.doi);
     if (crossrefData) {
@@ -282,7 +396,7 @@ function applyCrossRef(row, msg) {
   if (!authors.length) return;
 
   const name = row.researcherName.toLowerCase();
-  const authorIdx = findAuthorIndex(authors, name);
+  const authorIdx = findAuthorIndex(authors, name, row._engName);
 
   if (authorIdx === -1) {
     // 이름 매칭 실패 → 보수적으로 유지
@@ -306,20 +420,32 @@ function applyCrossRef(row, msg) {
   }
 }
 
-function findAuthorIndex(authors, nameLower) {
-  if (!nameLower) return -1;
-  const parts = nameLower.replace(/\s+/g, '').split('');
-  for (let i = 0; i < authors.length; i++) {
-    const a = authors[i];
-    const full = ((a.given || '') + (a.family || '')).toLowerCase().replace(/\s+/g, '');
-    const fullRev = ((a.family || '') + (a.given || '')).toLowerCase().replace(/\s+/g, '');
-    if (full === parts.join('') || fullRev === parts.join('')) return i;
-    // 한국어 이름: family가 성씨, given이 이름인 경우
-    const korean = (a.family || '').replace(/\s/g,'') + (a.given || '').replace(/\s/g,'');
-    if (korean.toLowerCase() === nameLower.replace(/\s/g,'')) return i;
-    // 부분 매칭 (성씨만)
-    if (a.family && nameLower.includes(a.family.toLowerCase())) {
-      return i; // 소극적 매칭
+function findAuthorIndex(authors, nameLower, engName) {
+  if (!authors || !authors.length) return -1;
+
+  // 영문명이 있으면 정확히 매칭 (Scopus 기반)
+  if (engName && engName.family) {
+    const fam = engName.family.toLowerCase();
+    const giv = (engName.given || '').toLowerCase();
+    for (let i = 0; i < authors.length; i++) {
+      const a = authors[i];
+      const af = (a.family || '').toLowerCase();
+      const ag = (a.given || '').toLowerCase();
+      // family 일치 + given 앞글자 일치
+      if (af === fam && (ag.startsWith(giv[0] || '') || giv.startsWith(ag[0] || ''))) return i;
+      // family만 일치
+      if (af === fam) return i;
+    }
+  }
+
+  // 한글명 fallback (부분 매칭)
+  if (nameLower) {
+    for (let i = 0; i < authors.length; i++) {
+      const a = authors[i];
+      const full = ((a.given || '') + (a.family || '')).toLowerCase().replace(/\s+/g, '');
+      const fullRev = ((a.family || '') + (a.given || '')).toLowerCase().replace(/\s+/g, '');
+      const name = nameLower.replace(/\s+/g, '');
+      if (full === name || fullRev === name) return i;
     }
   }
   return -1;
@@ -384,16 +510,19 @@ function applyPubMed(row, pmData) {
 
   const name = row.researcherName.toLowerCase().replace(/\s/g, '');
   const authors = pmData.authors;
+  const engName = row._engName;
 
-  // 해당 연구자 찾기
+  // 해당 연구자 찾기 (Scopus 영문명 우선)
   let myIdx = -1;
   for (let i = 0; i < authors.length; i++) {
     const a = authors[i];
+    if (engName && engName.family) {
+      if (a.lastName.toLowerCase() === engName.family.toLowerCase()) { myIdx = i; break; }
+    }
     const full = (a.lastName + a.foreName).toLowerCase().replace(/\s/g,'');
     const fullRev = (a.foreName + a.lastName).toLowerCase().replace(/\s/g,'');
     if (full === name || fullRev === name || name.includes(a.lastName.toLowerCase())) {
-      myIdx = i;
-      break;
+      myIdx = i; break;
     }
   }
   if (myIdx === -1) return;
