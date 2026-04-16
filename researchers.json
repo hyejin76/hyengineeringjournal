@@ -1,1861 +1,2310 @@
 [
   {
-    "nameKo": "David Phillip Wagner",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "IGBAFE ORIKUMHI",
-    "dept": "융합전자공학부",
-    "scopusId": "56964499600"
-  },
-  {
-    "nameKo": "KUTZNER ARNE HOLGER",
-    "dept": "정보시스템학과",
-    "scopusId": "11240943700"
-  },
-  {
-    "nameKo": "Ming-Chieh Lin",
-    "dept": "전기·생체공학부 전기공학전공",
-    "scopusId": "7404817320"
-  },
-  {
-    "nameKo": "강석구",
-    "dept": "건설환경공학과",
-    "scopusId": "36716278000"
-  },
-  {
-    "nameKo": "강성군",
-    "dept": "신소재공학부"
-  },
-  {
-    "nameKo": "강수용",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "7405685541"
-  },
-  {
-    "nameKo": "강용수",
-    "dept": "에너지공학과"
-  },
-  {
-    "nameKo": "강창묵",
-    "dept": "전기·생체공학부 전기공학전공"
-  },
-  {
-    "nameKo": "강형부",
-    "dept": "전기·생체공학부 전기공학전공"
-  },
-  {
-    "nameKo": "고광철",
-    "dept": "전기·생체공학부 전기공학전공"
-  },
-  {
-    "nameKo": "고민재",
-    "dept": "화학공학과",
-    "scopusId": "7201495119"
-  },
-  {
-    "nameKo": "곽노균",
-    "dept": "기계공학부",
-    "scopusId": "55330609300"
-  },
-  {
-    "nameKo": "구상만",
-    "dept": "화학공학과",
-    "scopusId": "56187348900"
-  },
-  {
-    "nameKo": "권대웅",
-    "dept": "융합전자공학부",
-    "scopusId": "36623827400"
-  },
-  {
-    "nameKo": "권오경",
-    "dept": "융합전자공학부",
-    "scopusId": "7402196067"
-  },
-  {
-    "nameKo": "권일한",
-    "dept": "자원환경공학과",
-    "scopusId": "9240622100"
-  },
-  {
-    "nameKo": "권태수",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "58106932900"
-  },
-  {
-    "nameKo": "금영탁",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "김경학",
-    "dept": "화학공학과",
-    "scopusId": "56589209600"
-  },
-  {
-    "nameKo": "김광욱",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "7409321180"
-  },
-  {
-    "nameKo": "김근배",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "김기현",
-    "dept": "건설환경공학과",
-    "scopusId": "56962774000"
-  },
-  {
-    "nameKo": "김덕수",
-    "dept": "기계공학부",
-    "scopusId": "35317846600"
-  },
-  {
-    "nameKo": "김도환",
-    "dept": "화학공학과",
-    "scopusId": "34769697400"
-  },
-  {
-    "nameKo": "김동규",
-    "dept": "융합전자공학부",
-    "scopusId": "14834267000"
-  },
-  {
-    "nameKo": "김동립",
-    "dept": "기계공학부",
-    "scopusId": "23090968100"
-  },
-  {
-    "nameKo": "김동원",
-    "dept": "화학공학과",
-    "scopusId": "57189201444"
-  },
-  {
-    "nameKo": "김동주",
-    "dept": "건설환경공학과"
-  },
-  {
-    "nameKo": "김동진",
-    "dept": "데이터사이언스학부 데이터사이언스전공",
-    "scopusId": "57212363853"
-  },
-  {
-    "nameKo": "김래영",
-    "dept": "전기·생체공학부 전기공학전공",
-    "scopusId": "7202933100"
-  },
-  {
-    "nameKo": "김면섭",
-    "dept": "화학공학과"
-  },
-  {
-    "nameKo": "김미숙",
-    "dept": "데이터사이언스학부 데이터사이언스전공",
-    "scopusId": "57194274736"
-  },
-  {
-    "nameKo": "김미정",
+    "nameKo": "안기현",
     "dept": "건축학부",
-    "scopusId": "36198125300"
-  },
-  {
-    "nameKo": "김민구",
-    "dept": "기계공학부",
-    "scopusId": "57191481126"
-  },
-  {
-    "nameKo": "김민성",
-    "dept": "미래자동차공학과"
-  },
-  {
-    "nameKo": "김병철",
-    "dept": "유기나노공학과"
-  },
-  {
-    "nameKo": "김상욱",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "55933677600"
-  },
-  {
-    "nameKo": "김상태",
-    "dept": "원자력공학과",
-    "scopusId": "57204021936"
-  },
-  {
-    "nameKo": "김선우",
-    "dept": "융합전자공학부",
-    "scopusId": "57194160623"
-  },
-  {
-    "nameKo": "김선일",
-    "dept": "전기·생체공학부 생체공학전공"
-  },
-  {
-    "nameKo": "김선정",
-    "dept": "전기·생체공학부 바이오메디컬공학전공",
-    "scopusId": "27167645500"
-  },
-  {
-    "nameKo": "김선준",
-    "dept": "자원환경공학과"
-  },
-  {
-    "nameKo": "김선진",
-    "dept": "신소재공학부"
-  },
-  {
-    "nameKo": "김성만",
-    "dept": "신소재공학부"
-  },
-  {
-    "nameKo": "김성신",
-    "dept": "데이터사이언스학부 심리뇌과학전공",
-    "scopusId": "54412339900"
-  },
-  {
-    "nameKo": "김성열",
-    "dept": "전기·생체공학부 전기공학전공"
-  },
-  {
-    "nameKo": "김성중",
-    "dept": "원자력공학과",
-    "scopusId": "36078645900"
-  },
-  {
-    "nameKo": "김성환",
-    "dept": "전기·생체공학부 바이오메디컬공학전공",
-    "scopusId": "57192890709"
-  },
-  {
-    "nameKo": "김성훈",
-    "dept": "유기나노공학과"
-  },
-  {
-    "nameKo": "김안모",
-    "dept": "전기·생체공학부 바이오메디컬공학전공",
-    "scopusId": "40361129200"
-  },
-  {
-    "nameKo": "김영도",
-    "dept": "신소재공학부",
-    "scopusId": "57194461597"
-  },
-  {
-    "nameKo": "김영모",
-    "dept": "건설환경공학과",
-    "scopusId": "57202258703"
-  },
-  {
-    "nameKo": "김영범",
-    "dept": "기계공학부",
-    "scopusId": "35299413000"
-  },
-  {
-    "nameKo": "김영조",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "김영호",
-    "dept": "신소재공학부"
-  },
-  {
-    "nameKo": "김영훈",
-    "dept": "에너지공학과",
-    "scopusId": "57221435899"
-  },
-  {
-    "nameKo": "김용균",
-    "dept": "원자력공학과",
-    "scopusId": "12344899300"
-  },
-  {
-    "nameKo": "김용모",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "김용희",
-    "dept": "생명공학과",
-    "scopusId": "57203809380"
-  },
-  {
-    "nameKo": "김윤호",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "55699526600"
-  },
-  {
-    "nameKo": "김은솔",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "56296379200"
-  },
-  {
-    "nameKo": "김은찬",
-    "dept": "정보시스템학과"
-  },
-  {
-    "nameKo": "김재경",
-    "dept": "건축학부"
-  },
-  {
-    "nameKo": "김재련",
-    "dept": "산업공학과"
-  },
-  {
-    "nameKo": "김재정",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "김재준",
-    "dept": "건축공학부",
-    "scopusId": "56034087400"
-  },
-  {
-    "nameKo": "김재훈",
-    "dept": "융합전자공학부",
-    "scopusId": "56812976900"
-  },
-  {
-    "nameKo": "김재희",
-    "dept": "공학교육혁신센터"
-  },
-  {
-    "nameKo": "김정규",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "김정희",
-    "dept": "융합전자공학부",
-    "scopusId": "52863809900"
-  },
-  {
-    "nameKo": "김종경",
-    "dept": "원자력공학과"
-  },
-  {
-    "nameKo": "김종만",
-    "dept": "화학공학과",
-    "scopusId": "7006279535"
-  },
-  {
-    "nameKo": "김종오",
-    "dept": "건설환경공학과",
-    "scopusId": "34770809300"
-  },
-  {
-    "nameKo": "김주형",
-    "dept": "건축공학부",
-    "scopusId": "35731699400"
-  },
-  {
-    "nameKo": "김지훈",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "김진국",
-    "dept": "화학공학과",
-    "scopusId": "57200621627"
-  },
-  {
-    "nameKo": "김진수",
-    "dept": "자원환경공학과",
-    "scopusId": "57200964846"
-  },
-  {
-    "nameKo": "김진오",
-    "dept": "전기·생체공학부 전기공학전공"
-  },
-  {
-    "nameKo": "김진우",
-    "dept": "건설환경공학과",
-    "scopusId": "57194707212"
-  },
-  {
-    "nameKo": "김진우",
-    "dept": "유기나노공학과"
-  },
-  {
-    "nameKo": "김찬형",
-    "dept": "원자력공학과",
-    "scopusId": "8071343400"
-  },
-  {
-    "nameKo": "김태복",
-    "dept": "산업공학과",
-    "scopusId": "14014218000"
-  },
-  {
-    "nameKo": "김태욱",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "57216614884"
-  },
-  {
-    "nameKo": "김태원",
-    "dept": "기계공학부",
-    "scopusId": "55696539300"
-  },
-  {
-    "nameKo": "김태현",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "55825749100"
-  },
-  {
-    "nameKo": "김태환",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "김학성",
-    "dept": "기계공학부",
-    "scopusId": "26039149700"
-  },
-  {
-    "nameKo": "김한수",
-    "dept": "에너지공학과",
-    "scopusId": "56151107400"
-  },
-  {
-    "nameKo": "김현우",
-    "dept": "신소재공학부",
-    "scopusId": "35324882800"
-  },
-  {
-    "nameKo": "김현준",
-    "dept": "데이터사이언스학부 데이터사이언스전공",
-    "scopusId": "57191718006"
-  },
-  {
-    "nameKo": "김현중",
-    "dept": "자원환경공학과",
-    "scopusId": "58671601700"
-  },
-  {
-    "nameKo": "김형동",
-    "dept": "융합전자공학부",
-    "scopusId": "7410128245"
-  },
-  {
-    "nameKo": "김형숙",
-    "dept": "데이터사이언스학부 심리뇌과학전공",
-    "scopusId": "56938160200"
-  },
-  {
-    "nameKo": "김형진",
-    "dept": "신소재공학부",
-    "scopusId": "57218447834"
-  },
-  {
-    "nameKo": "김홍배",
-    "dept": "도시공학과"
-  },
-  {
-    "nameKo": "김회율",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "김흥순",
-    "dept": "도시공학과",
-    "scopusId": "7410123455"
-  },
-  {
-    "nameKo": "남상원",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "남성택",
-    "dept": "건축학부",
-    "scopusId": "56814162000"
-  },
-  {
-    "nameKo": "남인호",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "남평우",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "노미나",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "16302227400"
-  },
-  {
-    "nameKo": "노승범",
-    "dept": "건축학부"
-  },
-  {
-    "nameKo": "노영균",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "23095341800"
-  },
-  {
-    "nameKo": "노영태",
-    "dept": "데이터사이언스학부 데이터사이언스전공",
-    "scopusId": "36105411600"
-  },
-  {
-    "nameKo": "노우석",
-    "dept": "공학교육혁신센터"
-  },
-  {
-    "nameKo": "노정현",
-    "dept": "도시공학과"
-  },
-  {
-    "nameKo": "도시현",
-    "dept": "에너지공학과",
-    "scopusId": "25936059900"
-  },
-  {
-    "nameKo": "류경옥",
-    "dept": "화학공학과"
-  },
-  {
-    "nameKo": "류성언",
-    "dept": "생명공학과",
-    "scopusId": "7402110974"
-  },
-  {
-    "nameKo": "리나",
-    "dept": "도시공학과",
-    "scopusId": "59088845300"
+    "campus": "서울",
+    "scopusId": "57191665064",
+    "familyName": "Ahn",
+    "givenName": "Keehyun",
+    "nameEn": "Keehyun Ahn"
   },
   {
     "nameKo": "맹민정",
     "dept": "건축학부",
-    "scopusId": "57070430400"
-  },
-  {
-    "nameKo": "맹주성",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "문성용",
-    "dept": "화학공학과",
-    "scopusId": "8609966100"
-  },
-  {
-    "nameKo": "문승재",
-    "dept": "기계공학부",
-    "scopusId": "7401616593"
-  },
-  {
-    "nameKo": "문준",
-    "dept": "전기·생체공학부 전기공학전공",
-    "scopusId": "55845880700"
-  },
-  {
-    "nameKo": "문한영",
-    "dept": "건설환경공학과"
-  },
-  {
-    "nameKo": "문현구",
-    "dept": "자원환경공학과"
-  },
-  {
-    "nameKo": "문희찬",
-    "dept": "융합전자공학부",
-    "scopusId": "7402661952"
-  },
-  {
-    "nameKo": "민승재",
-    "dept": "미래자동차공학과",
-    "scopusId": "7202852272"
-  },
-  {
-    "nameKo": "박관규",
-    "dept": "기계공학부",
-    "scopusId": "55827729700"
-  },
-  {
-    "nameKo": "박기호",
-    "dept": "화학공학과",
-    "scopusId": "56677033900"
-  },
-  {
-    "nameKo": "박대효",
-    "dept": "건설환경공학과"
-  },
-  {
-    "nameKo": "박두희",
-    "dept": "건설환경공학과",
-    "scopusId": "8517490100"
-  },
-  {
-    "nameKo": "박민용",
-    "dept": "산업공학과"
-  },
-  {
-    "nameKo": "박상규",
-    "dept": "융합전자공학부",
-    "scopusId": "7501836105"
-  },
-  {
-    "nameKo": "박상규",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "박성욱",
-    "dept": "기계공학부",
-    "scopusId": "56176474000"
-  },
-  {
-    "nameKo": "박성현",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "박승권",
-    "dept": "융합전자공학부",
-    "scopusId": "25825400800"
-  },
-  {
-    "nameKo": "박완준",
-    "dept": "융합전자공학부",
-    "scopusId": "7402227967"
-  },
-  {
-    "nameKo": "박용수",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "7405369734"
-  },
-  {
-    "nameKo": "박용진",
-    "dept": "컴퓨터소프트웨어학부"
-  },
-  {
-    "nameKo": "박용환",
-    "dept": "건축학부"
-  },
-  {
-    "nameKo": "박우성",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "박원일",
-    "dept": "신소재공학부",
-    "scopusId": "7402229532"
-  },
-  {
-    "nameKo": "박인영",
-    "dept": "공학교육혁신센터"
-  },
-  {
-    "nameKo": "박장현",
-    "dept": "미래자동차공학과",
-    "scopusId": "15036136700"
-  },
-  {
-    "nameKo": "박재구",
-    "dept": "자원환경공학과"
-  },
-  {
-    "nameKo": "박재근",
-    "dept": "융합전자공학부",
-    "scopusId": "56441837500"
-  },
-  {
-    "nameKo": "박재우",
-    "dept": "건설환경공학과",
-    "scopusId": "57194341566"
-  },
-  {
-    "nameKo": "박종완",
-    "dept": "신소재공학부"
-  },
-  {
-    "nameKo": "박종일",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "34768828500"
-  },
-  {
-    "nameKo": "박종현",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "박준석",
-    "dept": "건축공학부",
-    "scopusId": "15036379000"
-  },
-  {
-    "nameKo": "박준홍",
-    "dept": "기계공학부",
-    "scopusId": "15136887100"
-  },
-  {
-    "nameKo": "박진섭",
-    "dept": "융합전자공학부",
-    "scopusId": "35332660000"
-  },
-  {
-    "nameKo": "박진성",
-    "dept": "신소재공학부",
-    "scopusId": "8044372500"
-  },
-  {
-    "nameKo": "박진아",
-    "dept": "도시공학과",
-    "scopusId": "57191197721"
-  },
-  {
-    "nameKo": "박철진",
-    "dept": "산업공학과",
-    "scopusId": "56140970300"
-  },
-  {
-    "nameKo": "박현석",
-    "dept": "정보시스템학과",
-    "scopusId": "56175641800"
-  },
-  {
-    "nameKo": "박호범",
-    "dept": "에너지공학과",
-    "scopusId": "7601568195"
-  },
-  {
-    "nameKo": "박홍우",
-    "dept": "화학공학과"
-  },
-  {
-    "nameKo": "박희준",
-    "dept": "유기나노공학과",
-    "scopusId": "35093195600"
-  },
-  {
-    "nameKo": "박희진",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "57190847566"
-  },
-  {
-    "nameKo": "배석주",
-    "dept": "산업공학과",
-    "scopusId": "12800847700"
-  },
-  {
-    "nameKo": "배성우",
-    "dept": "전기·생체공학부 전기공학전공",
-    "scopusId": "36824404800"
-  },
-  {
-    "nameKo": "배성철",
-    "dept": "건축공학부",
-    "scopusId": "56026616000"
-  },
-  {
-    "nameKo": "배영찬",
-    "dept": "화학공학과"
-  },
-  {
-    "nameKo": "배지웅",
-    "dept": "기계공학부",
-    "scopusId": "57199910326"
-  },
-  {
-    "nameKo": "백성용",
-    "dept": "데이터사이언스학부 데이터사이언스전공",
-    "scopusId": "57216368459"
-  },
-  {
-    "nameKo": "백운규",
-    "dept": "에너지공학과",
-    "scopusId": "7006797606"
-  },
-  {
-    "nameKo": "백은옥",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "8259248200"
-  },
-  {
-    "nameKo": "변중무",
-    "dept": "자원환경공학과",
-    "scopusId": "7102897422"
-  },
-  {
-    "nameKo": "상병인",
-    "dept": "화학공학과",
-    "scopusId": "9338051300"
-  },
-  {
-    "nameKo": "서동학",
-    "dept": "화학공학과"
-  },
-  {
-    "nameKo": "서명수",
-    "dept": "건축학부"
-  },
-  {
-    "nameKo": "서병설",
-    "dept": "전기·생체공학부 전기공학전공"
-  },
-  {
-    "nameKo": "서영웅",
-    "dept": "화학공학과",
-    "scopusId": "35231739500"
-  },
-  {
-    "nameKo": "서일홍",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "서정길",
-    "dept": "화학공학과",
-    "scopusId": "15061821500"
-  },
-  {
-    "nameKo": "서종원",
-    "dept": "건설환경공학과",
-    "scopusId": "7401783784"
-  },
-  {
-    "nameKo": "서준오",
-    "dept": "건축공학부"
-  },
-  {
-    "nameKo": "서태원",
-    "dept": "기계공학부",
-    "scopusId": "8687541100"
-  },
-  {
-    "nameKo": "선양국",
-    "dept": "에너지공학과",
-    "scopusId": "55551960800"
-  },
-  {
-    "nameKo": "선우명호",
-    "dept": "미래자동차공학과"
-  },
-  {
-    "nameKo": "설선혜",
-    "dept": "데이터사이언스학부 심리뇌과학전공"
-  },
-  {
-    "nameKo": "설웅",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "56277874000"
-  },
-  {
-    "nameKo": "성원모",
-    "dept": "자원환경공학과"
-  },
-  {
-    "nameKo": "성태현",
-    "dept": "전기·생체공학부 전기공학전공",
-    "scopusId": "7102955156"
-  },
-  {
-    "nameKo": "소홍윤",
-    "dept": "기계공학부",
-    "scopusId": "57052300400"
-  },
-  {
-    "nameKo": "손병진",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "손장열",
-    "dept": "건축공학부"
-  },
-  {
-    "nameKo": "손주휘",
-    "dept": "건축학부"
-  },
-  {
-    "nameKo": "송민섭",
-    "dept": "원자력공학과",
-    "scopusId": "55890437100"
-  },
-  {
-    "nameKo": "송석규",
-    "dept": "유기나노공학과"
-  },
-  {
-    "nameKo": "송시몬",
-    "dept": "기계공학부",
-    "scopusId": "10141170500"
-  },
-  {
-    "nameKo": "송윤흡",
-    "dept": "융합전자공학부",
-    "scopusId": "36081079600"
-  },
-  {
-    "nameKo": "송익현",
-    "dept": "융합전자공학부",
-    "scopusId": "56252047800"
-  },
-  {
-    "nameKo": "송재욱",
-    "dept": "산업공학과",
-    "scopusId": "56912576300"
-  },
-  {
-    "nameKo": "송창섭",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "송태섭",
-    "dept": "에너지공학과",
-    "scopusId": "25825726200"
-  },
-  {
-    "nameKo": "송호철",
-    "dept": "자원환경공학과",
-    "scopusId": "56562122800"
-  },
-  {
-    "nameKo": "신동욱",
-    "dept": "신소재공학부",
-    "scopusId": "57193934795"
-  },
-  {
-    "nameKo": "신동준",
-    "dept": "융합전자공학부",
-    "scopusId": "7403352757"
-  },
-  {
-    "nameKo": "신흥수",
-    "dept": "생명공학과",
-    "scopusId": "7404012483"
-  },
-  {
-    "nameKo": "안광일",
-    "dept": "공학교육혁신센터"
-  },
-  {
-    "nameKo": "안기현",
-    "dept": "건축학부",
-    "scopusId": "57191665064"
-  },
-  {
-    "nameKo": "안종창",
-    "dept": "정보시스템학과",
-    "scopusId": "55319971300"
-  },
-  {
-    "nameKo": "안진호",
-    "dept": "신소재공학부",
-    "scopusId": "7403019709"
-  },
-  {
-    "nameKo": "안희준",
-    "dept": "유기나노공학과",
-    "scopusId": "55615307300"
-  },
-  {
-    "nameKo": "양승진",
-    "dept": "자원환경공학과"
-  },
-  {
-    "nameKo": "엄석기",
-    "dept": "기계공학부",
-    "scopusId": "9246118500"
-  },
-  {
-    "nameKo": "엄영호",
-    "dept": "유기나노공학과",
-    "scopusId": "56108103900"
-  },
-  {
-    "nameKo": "여영구",
-    "dept": "화학공학과"
-  },
-  {
-    "nameKo": "여홍구",
-    "dept": "도시공학과"
-  },
-  {
-    "nameKo": "염봉준",
-    "dept": "화학공학과",
-    "scopusId": "12646250600"
-  },
-  {
-    "nameKo": "오규식",
-    "dept": "도시공학과",
-    "scopusId": "16837014100"
-  },
-  {
-    "nameKo": "오근호",
-    "dept": "신소재공학부"
-  },
-  {
-    "nameKo": "오기용",
-    "dept": "기계공학부",
-    "scopusId": "35305648500"
-  },
-  {
-    "nameKo": "오누리",
-    "dept": "신소재공학부",
-    "scopusId": "15765887700"
-  },
-  {
-    "nameKo": "오성근",
-    "dept": "화학공학과",
-    "scopusId": "7404103103"
-  },
-  {
-    "nameKo": "오윤선",
-    "dept": "융합전자공학부",
-    "scopusId": "55560572600"
-  },
-  {
-    "nameKo": "오재응",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "오현옥",
-    "dept": "정보시스템학과",
-    "scopusId": "7402326124"
-  },
-  {
-    "nameKo": "왕웨이",
-    "dept": "기계공학부",
-    "scopusId": "56962944200"
-  },
-  {
-    "nameKo": "왕지훈",
-    "dept": "자원환경공학과",
-    "scopusId": "57208869005"
-  },
-  {
-    "nameKo": "원영준",
-    "dept": "정보시스템학과",
-    "scopusId": "7102129158"
-  },
-  {
-    "nameKo": "원정임",
-    "dept": "공학교육혁신센터",
-    "scopusId": "8853633300"
-  },
-  {
-    "nameKo": "위정재",
-    "dept": "유기나노공학과",
-    "scopusId": "26041261000"
-  },
-  {
-    "nameKo": "유민수",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "10140642100"
-  },
-  {
-    "nameKo": "유은종",
-    "dept": "건축공학부",
-    "scopusId": "8639910700"
-  },
-  {
-    "nameKo": "유재석",
-    "dept": "건설환경공학과",
-    "scopusId": "15071981600"
-  },
-  {
-    "nameKo": "유지형",
-    "dept": "미래자동차공학과",
-    "scopusId": "55556927500"
-  },
-  {
-    "nameKo": "유창재",
-    "dept": "융합전자공학부",
-    "scopusId": "7404976553"
-  },
-  {
-    "nameKo": "유형석",
-    "dept": "전기·생체공학부 바이오메디컬공학전공",
-    "scopusId": "25625778900"
-  },
-  {
-    "nameKo": "유호천",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "유홍희",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "육종철",
-    "dept": "원자력공학과"
-  },
-  {
-    "nameKo": "윤갑영",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "윤기중",
-    "dept": "융합전자공학부",
-    "scopusId": "55787448000"
-  },
-  {
-    "nameKo": "윤길호",
-    "dept": "기계공학부",
-    "scopusId": "7103257903"
-  },
-  {
-    "nameKo": "윤덕균",
-    "dept": "산업공학과"
-  },
-  {
-    "nameKo": "윤동원",
-    "dept": "융합전자공학부",
-    "scopusId": "57204628475"
-  },
-  {
-    "nameKo": "윤수경",
-    "dept": "공학교육혁신센터"
-  },
-  {
-    "nameKo": "윤영두",
-    "dept": "미래자동차공학과",
-    "scopusId": "15078285000"
-  },
-  {
-    "nameKo": "윤종승",
-    "dept": "신소재공학부",
-    "scopusId": "57201416616"
-  },
-  {
-    "nameKo": "윤채옥",
-    "dept": "생명공학과",
-    "scopusId": "7101911535"
-  },
-  {
-    "nameKo": "윤태열",
-    "dept": "융합전자공학부",
-    "scopusId": "7005282116"
-  },
-  {
-    "nameKo": "이강업",
-    "dept": "건축학부"
-  },
-  {
-    "nameKo": "이경섭",
-    "dept": "신소재공학부"
-  },
-  {
-    "nameKo": "이경용",
-    "dept": "데이터사이언스학부 데이터사이언스전공"
-  },
-  {
-    "nameKo": "이경종",
-    "dept": "신소재공학부"
-  },
-  {
-    "nameKo": "이관수",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "이근상",
-    "dept": "자원환경공학과",
-    "scopusId": "11140138600"
-  },
-  {
-    "nameKo": "이근용",
-    "dept": "생명공학과",
-    "scopusId": "57219405477"
-  },
-  {
-    "nameKo": "이기정",
-    "dept": "화학공학과"
-  },
-  {
-    "nameKo": "이기천",
-    "dept": "산업공학과",
-    "scopusId": "55776917700"
-  },
-  {
-    "nameKo": "이동윤",
-    "dept": "생명공학과",
-    "scopusId": "55698935900"
-  },
-  {
-    "nameKo": "이동진",
-    "dept": "미래자동차공학과",
-    "scopusId": "57216458338"
-  },
-  {
-    "nameKo": "이동호",
-    "dept": "산업공학과",
-    "scopusId": "57959349600"
-  },
-  {
-    "nameKo": "이민형",
-    "dept": "생명공학과",
-    "scopusId": "57203455317"
-  },
-  {
-    "nameKo": "이병헌",
-    "dept": "원자력공학과"
-  },
-  {
-    "nameKo": "이병호",
-    "dept": "컴퓨터소프트웨어학부"
-  },
-  {
-    "nameKo": "이병훈",
-    "dept": "전기·생체공학부 바이오메디컬공학전공",
-    "scopusId": "56647117000"
-  },
-  {
-    "nameKo": "이봉모",
-    "dept": "화학공학과"
-  },
-  {
-    "nameKo": "이상경",
-    "dept": "생명공학과",
-    "scopusId": "56193615200"
-  },
-  {
-    "nameKo": "이상선",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "이상설",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "이상환",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "이성민",
-    "dept": "전기·생체공학부 전기공학전공",
-    "scopusId": "55139772600"
-  },
-  {
-    "nameKo": "이성열",
-    "dept": "공학교육혁신센터"
-  },
-  {
-    "nameKo": "이성윤",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "57224862766"
-  },
-  {
-    "nameKo": "이세헌",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "이수기",
-    "dept": "도시공학과",
-    "scopusId": "56331529300"
-  },
-  {
-    "nameKo": "이승백",
-    "dept": "융합전자공학부",
-    "scopusId": "56530112500"
-  },
-  {
-    "nameKo": "이승용",
-    "dept": "신소재공학부",
-    "scopusId": "57192516389"
-  },
-  {
-    "nameKo": "이승원",
-    "dept": "자원환경공학과",
-    "scopusId": "57193443875"
-  },
-  {
-    "nameKo": "이승종",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "이승환",
-    "dept": "기계공학부",
-    "scopusId": "56706828000"
-  },
-  {
-    "nameKo": "이영무",
-    "dept": "에너지공학과",
-    "scopusId": "57364455900"
-  },
-  {
-    "nameKo": "이욱",
-    "dept": "정보시스템학과",
-    "scopusId": "7103020210"
-  },
-  {
-    "nameKo": "이윤상",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "56092301900"
-  },
-  {
-    "nameKo": "이윤정",
-    "dept": "에너지공학과",
-    "scopusId": "27172231300"
-  },
-  {
-    "nameKo": "이인환",
-    "dept": "컴퓨터소프트웨어학부"
-  },
-  {
-    "nameKo": "이재기",
-    "dept": "원자력공학과"
-  },
-  {
-    "nameKo": "이재석",
-    "dept": "공학교육혁신센터"
-  },
-  {
-    "nameKo": "이재헌",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "이정규",
-    "dept": "건설환경공학과"
-  },
-  {
-    "nameKo": "이정만",
-    "dept": "건축학부"
-  },
-  {
-    "nameKo": "이정표",
-    "dept": "원자력공학과",
-    "scopusId": "36476380500"
-  },
-  {
-    "nameKo": "이종민",
-    "dept": "전기·생체공학부 바이오메디컬공학전공",
-    "scopusId": "25622544900"
-  },
-  {
-    "nameKo": "이종원",
-    "dept": "신소재공학부",
-    "scopusId": "58852901000"
-  },
-  {
-    "nameKo": "이주",
-    "dept": "전기·생체공학부 전기공학전공",
-    "scopusId": "7601452672"
-  },
-  {
-    "nameKo": "이주형",
-    "dept": "도시공학과"
-  },
-  {
-    "nameKo": "이창무",
-    "dept": "도시공학과",
-    "scopusId": "56100780800"
-  },
-  {
-    "nameKo": "이창식",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "이창희",
-    "dept": "신소재공학부"
-  },
-  {
-    "nameKo": "이채은",
-    "dept": "융합전자공학부",
-    "scopusId": "36840102400"
-  },
-  {
-    "nameKo": "이춘화",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "7410152898"
-  },
-  {
-    "nameKo": "이태경",
-    "dept": "유기나노공학과"
-  },
-  {
-    "nameKo": "이태희",
-    "dept": "미래자동차공학과"
-  },
-  {
-    "nameKo": "이헌준",
-    "dept": "컴퓨터소프트웨어학부"
-  },
-  {
-    "nameKo": "이형철",
-    "dept": "전기·생체공학부 전기공학전공",
-    "scopusId": "16067010700"
-  },
-  {
-    "nameKo": "임동현",
-    "dept": "생명공학과"
-  },
-  {
-    "nameKo": "임명섭",
-    "dept": "미래자동차공학과",
-    "scopusId": "56421264500"
-  },
-  {
-    "nameKo": "임승순",
-    "dept": "유기나노공학과"
-  },
-  {
-    "nameKo": "임원빈",
-    "dept": "신소재공학부",
-    "scopusId": "8091604200"
-  },
-  {
-    "nameKo": "임을규",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "35876146600"
-  },
-  {
-    "nameKo": "임장근",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "임재명",
-    "dept": "융합전자공학부",
-    "scopusId": "56647247600"
-  },
-  {
-    "nameKo": "임제탁",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "임창환",
-    "dept": "전기·생체공학부 바이오메디컬공학전공",
-    "scopusId": "7005671177"
-  },
-  {
-    "nameKo": "임태연",
-    "dept": "생명공학과",
-    "scopusId": "6603303607"
-  },
-  {
-    "nameKo": "임형욱",
-    "dept": "데이터사이언스학부 심리뇌과학전공",
-    "scopusId": "55769523100"
-  },
-  {
-    "nameKo": "임희대",
-    "dept": "화학공학과",
-    "scopusId": "49561429700"
-  },
-  {
-    "nameKo": "장건희",
-    "dept": "기계공학부",
-    "scopusId": "7102646112"
-  },
-  {
-    "nameKo": "장경영",
-    "dept": "기계공학부",
-    "scopusId": "6701605029"
-  },
-  {
-    "nameKo": "장윤정",
-    "dept": "화학공학과",
-    "scopusId": "56189124000"
-  },
-  {
-    "nameKo": "장의선",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "7006157400"
-  },
-  {
-    "nameKo": "장재영",
-    "dept": "에너지공학과",
-    "scopusId": "55730015300"
-  },
-  {
-    "nameKo": "장재일",
-    "dept": "신소재공학부",
-    "scopusId": "56238624300"
-  },
-  {
-    "nameKo": "장준혁",
-    "dept": "융합전자공학부",
-    "scopusId": "34969012900"
-  },
-  {
-    "nameKo": "전규동",
-    "dept": "원자력공학과"
-  },
-  {
-    "nameKo": "전병훈",
-    "dept": "자원환경공학과",
-    "scopusId": "57653536800"
-  },
-  {
-    "nameKo": "전상환",
-    "dept": "공학교육혁신센터"
-  },
-  {
-    "nameKo": "전종수",
-    "dept": "건설환경공학과",
-    "scopusId": "55365726100"
-  },
-  {
-    "nameKo": "전진용",
-    "dept": "건축공학부",
-    "scopusId": "7202412004"
-  },
-  {
-    "nameKo": "전한종",
-    "dept": "건축학부",
-    "scopusId": "56165483800"
-  },
-  {
-    "nameKo": "정규선",
-    "dept": "전기·생체공학부 전기공학전공"
-  },
-  {
-    "nameKo": "정기석",
-    "dept": "융합전자공학부",
-    "scopusId": "36996435900"
-  },
-  {
-    "nameKo": "정두석",
-    "dept": "신소재공학부",
-    "scopusId": "7102257240"
-  },
-  {
-    "nameKo": "정성종",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "정성훈",
-    "dept": "유기나노공학과"
-  },
-  {
-    "nameKo": "정예환",
-    "dept": "융합전자공학부",
-    "scopusId": "49561234300"
-  },
-  {
-    "nameKo": "정용재",
-    "dept": "신소재공학부",
-    "scopusId": "21735768400"
-  },
-  {
-    "nameKo": "정윤선",
-    "dept": "원자력공학과",
-    "scopusId": "54912992900"
-  },
-  {
-    "nameKo": "정인재",
-    "dept": "산업공학과",
-    "scopusId": "7101712544"
-  },
-  {
-    "nameKo": "정인환",
-    "dept": "유기나노공학과",
-    "scopusId": "34874884800"
-  },
-  {
-    "nameKo": "정재경",
-    "dept": "융합전자공학부",
-    "scopusId": "7402046078"
-  },
-  {
-    "nameKo": "정재원",
-    "dept": "건축공학부",
-    "scopusId": "7402045763"
-  },
-  {
-    "nameKo": "정재윤",
-    "dept": "유기나노공학과",
-    "scopusId": "7004362198"
-  },
-  {
-    "nameKo": "정정화",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "정제명",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "정제창",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "정지훈",
-    "dept": "산업공학과"
-  },
-  {
-    "nameKo": "정진국",
-    "dept": "건축학부"
-  },
-  {
-    "nameKo": "정진욱",
-    "dept": "전기·생체공학부 전기공학전공",
-    "scopusId": "35069194700"
-  },
-  {
-    "nameKo": "정해준",
-    "dept": "융합전자공학부",
-    "scopusId": "57216743098"
-  },
-  {
-    "nameKo": "정현도",
-    "dept": "신소재공학부",
-    "scopusId": "55575392600"
-  },
-  {
-    "nameKo": "조기춘",
-    "dept": "미래자동차공학과",
-    "scopusId": "36470196200"
-  },
-  {
-    "nameKo": "조동현",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "56119369900"
-  },
-  {
-    "nameKo": "조병완",
-    "dept": "건설환경공학과"
-  },
-  {
-    "nameKo": "조성호",
-    "dept": "융합전자공학부",
-    "scopusId": "24605467000"
-  },
-  {
-    "nameKo": "조영필",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "55792542200"
-  },
-  {
-    "nameKo": "조용식",
-    "dept": "건설환경공학과",
-    "scopusId": "7404469462"
-  },
-  {
-    "nameKo": "조용흠",
-    "dept": "원자력공학과",
-    "scopusId": "57412109500"
-  },
-  {
-    "nameKo": "조은철",
-    "dept": "화학공학과",
-    "scopusId": "7202650668"
-  },
-  {
-    "nameKo": "조인휘",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "56212559100"
-  },
-  {
-    "nameKo": "조진수",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "조창기",
-    "dept": "유기나노공학과"
-  },
-  {
-    "nameKo": "조한신",
-    "dept": "미래자동차공학과",
-    "scopusId": "12804430400"
-  },
-  {
-    "nameKo": "조호성",
-    "dept": "공학교육혁신센터",
-    "scopusId": "26667751500"
-  },
-  {
-    "nameKo": "차재혁",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "24472530200"
-  },
-  {
-    "nameKo": "채동규",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "55735568900"
-  },
-  {
-    "nameKo": "최규석",
-    "dept": "화학공학과"
-  },
-  {
-    "nameKo": "최덕균",
-    "dept": "신소재공학부"
-  },
-  {
-    "nameKo": "최동호",
-    "dept": "건설환경공학과",
-    "scopusId": "55912736800"
-  },
-  {
-    "nameKo": "최동훈",
-    "dept": "기계공학부"
-  },
-  {
-    "nameKo": "최병덕",
-    "dept": "융합전자공학부",
-    "scopusId": "7402755157"
-  },
-  {
-    "nameKo": "최병욱",
-    "dept": "컴퓨터소프트웨어학부"
-  },
-  {
-    "nameKo": "최상흘",
-    "dept": "신소재공학부"
-  },
-  {
-    "nameKo": "최선진",
-    "dept": "신소재공학부",
-    "scopusId": "37101425600"
-  },
-  {
-    "nameKo": "최성용",
-    "dept": "전기·생체공학부 바이오메디컬공학전공",
-    "scopusId": "57209837667"
-  },
-  {
-    "nameKo": "최성철",
-    "dept": "신소재공학부"
-  },
-  {
-    "nameKo": "최성택",
-    "dept": "도시공학과"
-  },
-  {
-    "nameKo": "최승원",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "최용석",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "56055020700"
-  },
-  {
-    "nameKo": "최재훈",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "최정욱",
-    "dept": "융합전자공학부",
-    "scopusId": "55513194500"
-  },
-  {
-    "nameKo": "최진식",
-    "dept": "컴퓨터소프트웨어학부",
-    "scopusId": "7501395652"
-  },
-  {
-    "nameKo": "최창순",
-    "dept": "전기·생체공학부 바이오메디컬공학전공",
-    "scopusId": "57202811755"
-  },
-  {
-    "nameKo": "최창식",
-    "dept": "건축공학부",
-    "scopusId": "35323886600"
-  },
-  {
-    "nameKo": "최창환",
-    "dept": "신소재공학부",
-    "scopusId": "56693553400"
-  },
-  {
-    "nameKo": "추현욱",
-    "dept": "건설환경공학과",
-    "scopusId": "35365797900"
-  },
-  {
-    "nameKo": "탁문호",
-    "dept": "공학교육혁신센터",
-    "scopusId": "35100829000"
-  },
-  {
-    "nameKo": "하백현",
-    "dept": "화학공학과"
-  },
-  {
-    "nameKo": "하성규",
-    "dept": "기계공학부",
-    "scopusId": "56984275000"
-  },
-  {
-    "nameKo": "한경석",
-    "dept": "미래자동차공학과"
-  },
-  {
-    "nameKo": "한경식",
-    "dept": "데이터사이언스학부 데이터사이언스전공",
-    "scopusId": "58643233700"
-  },
-  {
-    "nameKo": "한동수",
-    "dept": "건축학부",
-    "scopusId": "55190783400"
-  },
-  {
-    "nameKo": "한상욱",
-    "dept": "건설환경공학과",
-    "scopusId": "55487857100"
-  },
-  {
-    "nameKo": "한상환",
-    "dept": "건축공학부",
-    "scopusId": "34869770100"
-  },
-  {
-    "nameKo": "한석영",
-    "dept": "기계공학부",
-    "scopusId": "55552785800"
-  },
-  {
-    "nameKo": "한영열",
-    "dept": "융합전자공학부"
-  },
-  {
-    "nameKo": "한재덕",
-    "dept": "융합전자공학부",
-    "scopusId": "57111041000"
-  },
-  {
-    "nameKo": "한정호",
-    "dept": "신소재공학부",
-    "scopusId": "56019417300"
-  },
-  {
-    "nameKo": "한태희",
-    "dept": "신소재공학부",
-    "scopusId": "57204796695"
-  },
-  {
-    "nameKo": "한태희",
-    "dept": "유기나노공학과",
-    "scopusId": "56531297700"
-  },
-  {
-    "nameKo": "한혁수",
-    "dept": "신소재공학부"
-  },
-  {
-    "nameKo": "함동효",
-    "dept": "화학공학과"
-  },
-  {
-    "nameKo": "허건수",
-    "dept": "미래자동차공학과",
-    "scopusId": "7102173398"
-  },
-  {
-    "nameKo": "현동석",
-    "dept": "전기·생체공학부 전기공학전공"
-  },
-  {
-    "nameKo": "홍서기",
-    "dept": "원자력공학과",
-    "scopusId": "9740203500"
-  },
-  {
-    "nameKo": "홍송남",
-    "dept": "융합전자공학부",
-    "scopusId": "56161254500"
-  },
-  {
-    "nameKo": "홍제형",
-    "dept": "융합전자공학부",
-    "scopusId": "58642601400"
-  },
-  {
-    "nameKo": "황순민",
-    "dept": "미래자동차공학과",
-    "scopusId": "57211724237"
-  },
-  {
-    "nameKo": "황장연",
-    "dept": "에너지공학과",
-    "scopusId": "56297975400"
+    "campus": "서울",
+    "scopusId": "57070430400",
+    "familyName": "Maing",
+    "givenName": "Minjung",
+    "nameEn": "Maing Minjung"
   },
   {
     "nameKo": "황희준",
     "dept": "건축학부",
-    "scopusId": "57222469439"
+    "campus": "서울",
+    "scopusId": "57222469439",
+    "familyName": "Whang",
+    "givenName": "Heejoon",
+    "nameEn": "Heejoon Whang"
+  },
+  {
+    "nameKo": "전한종",
+    "dept": "건축학부",
+    "campus": "서울",
+    "scopusId": "56165483800",
+    "familyName": "Jun",
+    "givenName": "Hanjong",
+    "nameEn": "Jun, Hanjong"
+  },
+  {
+    "nameKo": "노승범",
+    "dept": "건축학부",
+    "campus": "서울",
+    "familyName": "Roh",
+    "givenName": "Seungbom",
+    "nameEn": "Roh Seungbom"
+  },
+  {
+    "nameKo": "김미정",
+    "dept": "건축학부",
+    "campus": "서울",
+    "scopusId": "36198125300",
+    "familyName": "Kim",
+    "givenName": "Mi Jeong",
+    "nameEn": "Mi Jeong Kim"
+  },
+  {
+    "nameKo": "남성택",
+    "dept": "건축학부",
+    "campus": "서울",
+    "scopusId": "56814162000",
+    "familyName": "Nam",
+    "givenName": "Sung-Taeg",
+    "nameEn": "NAM Sung-Taeg"
+  },
+  {
+    "nameKo": "김재경",
+    "dept": "건축학부",
+    "campus": "서울",
+    "familyName": "Kim",
+    "givenName": "Jae Kyung",
+    "nameEn": "Jae Kyung Kim"
+  },
+  {
+    "nameKo": "서명수",
+    "dept": "건축학부",
+    "campus": "서울",
+    "familyName": "Seo",
+    "givenName": "Myengsoo",
+    "nameEn": "Seo, Myengsoo"
+  },
+  {
+    "nameKo": "손주휘",
+    "dept": "건축학부",
+    "campus": "서울",
+    "familyName": "Son",
+    "givenName": "Joohui",
+    "nameEn": "Son Joohui"
+  },
+  {
+    "nameKo": "최창식",
+    "dept": "건축공학부",
+    "campus": "서울",
+    "scopusId": "35323886600",
+    "familyName": "Choi",
+    "givenName": "Chang-Sik",
+    "nameEn": "Choi Chang-Sik"
+  },
+  {
+    "nameKo": "한상환",
+    "dept": "건축공학부",
+    "campus": "서울",
+    "scopusId": "34869770100",
+    "familyName": "Han",
+    "givenName": "Sang Whan",
+    "nameEn": "Han, Sang Whan"
+  },
+  {
+    "nameKo": "박준석",
+    "dept": "건축공학부",
+    "campus": "서울",
+    "scopusId": "15036379000",
+    "familyName": "Park",
+    "givenName": "Jun-Seok",
+    "nameEn": "Park, Jun-seok"
+  },
+  {
+    "nameKo": "김주형",
+    "dept": "건축공학부",
+    "campus": "서울",
+    "scopusId": "35731699400",
+    "familyName": "Kim",
+    "givenName": "Ju-Hyung",
+    "nameEn": "Kim, Ju-Hyung"
+  },
+  {
+    "nameKo": "정재원",
+    "dept": "건축공학부",
+    "campus": "서울",
+    "scopusId": "7402045763",
+    "familyName": "Jeong",
+    "givenName": "Jae Weon",
+    "nameEn": "JEONG, JAE WEON"
+  },
+  {
+    "nameKo": "유은종",
+    "dept": "건축공학부",
+    "campus": "서울",
+    "scopusId": "8639910700",
+    "familyName": "Yu",
+    "givenName": "Eunjong",
+    "nameEn": "Yu Eunjong"
+  },
+  {
+    "nameKo": "배성철",
+    "dept": "건축공학부",
+    "campus": "서울",
+    "scopusId": "56026616000",
+    "familyName": "Bae",
+    "givenName": "Sungchul",
+    "nameEn": "BAE SUNGCHUL"
+  },
+  {
+    "nameKo": "서준오",
+    "dept": "건축공학부",
+    "campus": "서울",
+    "familyName": "Seo",
+    "givenName": "Joonoh",
+    "nameEn": "SEO, JoonOh"
+  },
+  {
+    "nameKo": "김기현",
+    "dept": "건설환경공학과",
+    "campus": "서울",
+    "scopusId": "56962774000",
+    "familyName": "Kim",
+    "givenName": "Ki-Hyun",
+    "nameEn": "Ki-Hyun Kim"
+  },
+  {
+    "nameKo": "박재우",
+    "dept": "건설환경공학과",
+    "campus": "서울",
+    "scopusId": "57194341566",
+    "familyName": "Park",
+    "givenName": "Jae-Woo",
+    "nameEn": "Park, Jae-Woo"
+  },
+  {
+    "nameKo": "최동호",
+    "dept": "건설환경공학과",
+    "campus": "서울",
+    "scopusId": "55912736800",
+    "familyName": "Choi",
+    "givenName": "Dong Ho",
+    "nameEn": "Dong Ho Choi"
+  },
+  {
+    "nameKo": "서종원",
+    "dept": "건설환경공학과",
+    "campus": "서울",
+    "scopusId": "7401783784",
+    "familyName": "Seo",
+    "givenName": "Jongwon",
+    "nameEn": "Seo, Jongwon"
+  },
+  {
+    "nameKo": "김종오",
+    "dept": "건설환경공학과",
+    "campus": "서울",
+    "scopusId": "34770809300",
+    "familyName": "Kim",
+    "givenName": "Jong Oh",
+    "nameEn": "Kim, Jong Oh"
+  },
+  {
+    "nameKo": "유재석",
+    "dept": "건설환경공학과",
+    "campus": "서울",
+    "scopusId": "15071981600",
+    "familyName": "Ryou",
+    "givenName": "Jaesuk",
+    "nameEn": "JAESUK RYOU"
+  },
+  {
+    "nameKo": "박두희",
+    "dept": "건설환경공학과",
+    "campus": "서울",
+    "scopusId": "8517490100",
+    "familyName": "Park",
+    "givenName": "Duhee",
+    "nameEn": "Park Duhee"
+  },
+  {
+    "nameKo": "김동주",
+    "dept": "건설환경공학과",
+    "campus": "서울",
+    "familyName": "Kim",
+    "givenName": "Dong Joo",
+    "nameEn": "KIM, Dong Joo"
+  },
+  {
+    "nameKo": "김영모",
+    "dept": "건설환경공학과",
+    "campus": "서울",
+    "scopusId": "57202258703",
+    "familyName": "Mo",
+    "givenName": "Kim Young",
+    "nameEn": "KIM YOUNG MO"
+  },
+  {
+    "nameKo": "강석구",
+    "dept": "건설환경공학과",
+    "campus": "서울",
+    "scopusId": "36716278000",
+    "familyName": "Kang",
+    "givenName": "Seokkoo",
+    "nameEn": "Kang, SeokKoo"
+  },
+  {
+    "nameKo": "한상욱",
+    "dept": "건설환경공학과",
+    "campus": "서울",
+    "scopusId": "55487857100",
+    "familyName": "Han",
+    "givenName": "Sanguk",
+    "nameEn": "Han, SangUk"
+  },
+  {
+    "nameKo": "추현욱",
+    "dept": "건설환경공학과",
+    "campus": "서울",
+    "scopusId": "35365797900",
+    "familyName": "Hyunwook",
+    "givenName": "Choo",
+    "nameEn": "Choo Hyunwook"
+  },
+  {
+    "nameKo": "전종수",
+    "dept": "건설환경공학과",
+    "campus": "서울",
+    "scopusId": "55365726100",
+    "familyName": "Jeon",
+    "givenName": "Jong-Su",
+    "nameEn": "Jong-Su Jeon"
+  },
+  {
+    "nameKo": "김진우",
+    "dept": "건설환경공학과",
+    "campus": "서울",
+    "familyName": "Kim",
+    "givenName": "Jinwoo",
+    "nameEn": "Jinwoo Kim"
+  },
+  {
+    "nameKo": "김흥순",
+    "dept": "도시공학과",
+    "campus": "서울",
+    "scopusId": "7410123455",
+    "familyName": "Kim",
+    "givenName": "Heungsoon",
+    "nameEn": "Kim, Heungsoon"
+  },
+  {
+    "nameKo": "이창무",
+    "dept": "도시공학과",
+    "campus": "서울",
+    "scopusId": "56100780800",
+    "familyName": "Lee",
+    "givenName": "Chang-Moo",
+    "nameEn": "Chang-Moo Lee"
+  },
+  {
+    "nameKo": "이수기",
+    "dept": "도시공학과",
+    "campus": "서울",
+    "scopusId": "56331529300",
+    "familyName": "Lee",
+    "givenName": "Sugie",
+    "nameEn": "Sugie Lee"
+  },
+  {
+    "nameKo": "박진아",
+    "dept": "도시공학과",
+    "campus": "서울",
+    "scopusId": "57191197721",
+    "familyName": "Park",
+    "givenName": "Jin A",
+    "nameEn": "PARK JIN A"
+  },
+  {
+    "nameKo": "최성택",
+    "dept": "도시공학과",
+    "campus": "서울",
+    "familyName": "Choi",
+    "givenName": "Sungtaek",
+    "nameEn": "Choi Sungtaek"
+  },
+  {
+    "nameKo": "리나",
+    "dept": "도시공학과",
+    "campus": "서울",
+    "scopusId": "59088845300",
+    "familyName": "Na",
+    "givenName": "Li",
+    "nameEn": "LI NA"
+  },
+  {
+    "nameKo": "이근상",
+    "dept": "자원환경공학과",
+    "campus": "서울",
+    "scopusId": "11140138600",
+    "familyName": "Lee",
+    "givenName": "Kun Sang",
+    "nameEn": "Kun Sang Lee"
+  },
+  {
+    "nameKo": "전병훈",
+    "dept": "자원환경공학과",
+    "campus": "서울",
+    "scopusId": "57653536800",
+    "familyName": "Jeon",
+    "givenName": "Byong-Hun",
+    "nameEn": "Byong-Hun Jeon"
+  },
+  {
+    "nameKo": "변중무",
+    "dept": "자원환경공학과",
+    "campus": "서울",
+    "scopusId": "7102897422",
+    "familyName": "Byun",
+    "givenName": "Joongmoo",
+    "nameEn": "Joongmoo Byun"
+  },
+  {
+    "nameKo": "송호철",
+    "dept": "자원환경공학과",
+    "campus": "서울",
+    "scopusId": "56562122800",
+    "familyName": "Song",
+    "givenName": "Hocheol",
+    "nameEn": "Hocheol Song"
+  },
+  {
+    "nameKo": "이승원",
+    "dept": "자원환경공학과",
+    "campus": "서울",
+    "scopusId": "57193443875",
+    "familyName": "Lee",
+    "givenName": "Sean Seungwon",
+    "nameEn": "Sean Seungwon Lee"
+  },
+  {
+    "nameKo": "김현중",
+    "dept": "자원환경공학과",
+    "campus": "서울",
+    "scopusId": "58671601700",
+    "familyName": "Kim",
+    "givenName": "Hyunjung",
+    "nameEn": "Hyunjung Kim"
+  },
+  {
+    "nameKo": "김진수",
+    "dept": "자원환경공학과",
+    "campus": "서울",
+    "scopusId": "57200964846",
+    "familyName": "Kim",
+    "givenName": "Jinsoo",
+    "nameEn": "Kim, Jinsoo"
+  },
+  {
+    "nameKo": "권일한",
+    "dept": "자원환경공학과",
+    "campus": "서울",
+    "scopusId": "9240622100",
+    "familyName": "Kwon",
+    "givenName": "Eilhann E.",
+    "nameEn": "Eilhann E. Kwon"
+  },
+  {
+    "nameKo": "왕지훈",
+    "dept": "자원환경공학과",
+    "campus": "서울",
+    "scopusId": "57208869005",
+    "familyName": "Wang",
+    "givenName": "Jihoon",
+    "nameEn": "Jihoon Wang"
+  },
+  {
+    "nameKo": "윤동원",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "57204628475",
+    "familyName": "Yoon",
+    "givenName": "Dongweon",
+    "nameEn": "Dongweon Yoon"
+  },
+  {
+    "nameKo": "신동준",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "7403352757",
+    "familyName": "Shin",
+    "givenName": "Dong-Joon",
+    "nameEn": "Dong-Joon Shin"
+  },
+  {
+    "nameKo": "김재훈",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "56812976900",
+    "familyName": "Kim",
+    "givenName": "Jae-Hoon",
+    "nameEn": "Jae-Hoon Kim"
+  },
+  {
+    "nameKo": "박상규",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "familyName": "Park",
+    "givenName": "Sang-Gyu",
+    "nameEn": "Sang-Gyu Park"
+  },
+  {
+    "nameKo": "박완준",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "7402227967",
+    "familyName": "Park",
+    "givenName": "Wanjun",
+    "nameEn": "Park, Wanjun"
+  },
+  {
+    "nameKo": "김동규",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "14834267000",
+    "familyName": "Kim",
+    "givenName": "Dong Kyue",
+    "nameEn": "Kim, Dong Kyue"
+  },
+  {
+    "nameKo": "이승백",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "56530112500",
+    "familyName": "Lee",
+    "givenName": "Seung-Beck",
+    "nameEn": "Lee Seung-Beck"
+  },
+  {
+    "nameKo": "윤태열",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "7005282116",
+    "familyName": "Yun",
+    "givenName": "Tae-Yeoul",
+    "nameEn": "Yun, Tae-Yeoul"
+  },
+  {
+    "nameKo": "최병덕",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "7402755157",
+    "familyName": "Choi",
+    "givenName": "Byongdeok",
+    "nameEn": "CHOI BYONGDEOK"
+  },
+  {
+    "nameKo": "정기석",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "36996435900",
+    "familyName": "Chung",
+    "givenName": "Ki-Seok",
+    "nameEn": "Chung Ki-Seok"
+  },
+  {
+    "nameKo": "송윤흡",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "36081079600",
+    "familyName": "Song",
+    "givenName": "Yun Heub",
+    "nameEn": "Song Yun Heub"
+  },
+  {
+    "nameKo": "장준혁",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "34969012900",
+    "familyName": "Chang",
+    "givenName": "Joon-Hyuk",
+    "nameEn": "Joon-Hyuk Chang"
+  },
+  {
+    "nameKo": "김선우",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "57194160623",
+    "familyName": "Kim",
+    "givenName": "Sunwoo",
+    "nameEn": "Kim, Sunwoo"
+  },
+  {
+    "nameKo": "정재경",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "7402046078",
+    "familyName": "Jeong",
+    "givenName": "Jae Kyeong",
+    "nameEn": "Jae Kyeong Jeong"
+  },
+  {
+    "nameKo": "문희찬",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "7402661952",
+    "familyName": "Moon",
+    "givenName": "Hichan",
+    "nameEn": "Hichan Moon"
+  },
+  {
+    "nameKo": "유창재",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "7404976553",
+    "familyName": "Yu",
+    "givenName": "Chang-Jae",
+    "nameEn": "Chang-Jae Yu"
+  },
+  {
+    "nameKo": "박진섭",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "35332660000",
+    "familyName": "Park",
+    "givenName": "Jinsub",
+    "nameEn": "Park, Jinsub"
+  },
+  {
+    "nameKo": "김지훈",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "familyName": "Kim",
+    "givenName": "Ji-Hoon",
+    "nameEn": "Ji-Hoon Kim"
+  },
+  {
+    "nameKo": "이채은",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "36840102400",
+    "familyName": "Eun",
+    "givenName": "Rhee Chae",
+    "nameEn": "Rhee Chae Eun"
+  },
+  {
+    "nameKo": "홍송남",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "56161254500",
+    "familyName": "Hong",
+    "givenName": "Songnam",
+    "nameEn": "Hong, Songnam"
+  },
+  {
+    "nameKo": "David Phillip Wagner",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "familyName": "Wagner",
+    "givenName": "David Phillip",
+    "nameEn": "David Phillip Wagner"
+  },
+  {
+    "nameKo": "윤기중",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "55787448000",
+    "familyName": "Yoon",
+    "givenName": "Kijung",
+    "nameEn": "Yoon Kijung"
+  },
+  {
+    "nameKo": "정예환",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "49561234300",
+    "familyName": "Jung",
+    "givenName": "Yei Hwan",
+    "nameEn": "Yei Hwan Jung"
+  },
+  {
+    "nameKo": "권대웅",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "36623827400",
+    "familyName": "Kwon",
+    "givenName": "Daewoong",
+    "nameEn": "Daewoong Kwon"
+  },
+  {
+    "nameKo": "최정욱",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "55513194500",
+    "familyName": "Choi",
+    "givenName": "Jungwook",
+    "nameEn": "Jungwook Choi"
+  },
+  {
+    "nameKo": "송익현",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "56252047800",
+    "familyName": "Song",
+    "givenName": "Ickhyun",
+    "nameEn": "Ickhyun Song"
+  },
+  {
+    "nameKo": "김정희",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "52863809900",
+    "familyName": "Kim",
+    "givenName": "Jeonghee",
+    "nameEn": "Kim, Jeonghee"
+  },
+  {
+    "nameKo": "정해준",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "57216743098",
+    "familyName": "Chung",
+    "givenName": "Haejun",
+    "nameEn": "Haejun Chung"
+  },
+  {
+    "nameKo": "임재명",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "56647247600",
+    "familyName": "Lim",
+    "givenName": "Jaemyung",
+    "nameEn": "Jaemyung Lim"
+  },
+  {
+    "nameKo": "한재덕",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "57111041000",
+    "familyName": "Han",
+    "givenName": "Jaeduk",
+    "nameEn": "Jaeduk Han"
+  },
+  {
+    "nameKo": "유호천",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "familyName": "Yoo",
+    "givenName": "Hocheon",
+    "nameEn": "Hocheon Yoo"
+  },
+  {
+    "nameKo": "IGBAFE ORIKUMHI",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "56964499600",
+    "familyName": "Orikumhi",
+    "givenName": "Igbafe",
+    "nameEn": "IGBAFE ORIKUMHI"
+  },
+  {
+    "nameKo": "오윤선",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "55560572600",
+    "familyName": "Oh",
+    "givenName": "yoonseon",
+    "nameEn": "yoonseon oh"
+  },
+  {
+    "nameKo": "홍제형",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "scopusId": "58642601400",
+    "familyName": "Hong",
+    "givenName": "Je Hyeong",
+    "nameEn": "Je Hyeong Hong"
+  },
+  {
+    "nameKo": "김근배",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "familyName": "Bae",
+    "givenName": "Kim Geun",
+    "nameEn": "KIM GEUN BAE"
+  },
+  {
+    "nameKo": "남인호",
+    "dept": "융합전자공학부",
+    "campus": "서울",
+    "familyName": "Nam",
+    "givenName": "Inho",
+    "nameEn": "NAM, INHO"
+  },
+  {
+    "nameKo": "KUTZNER ARNE HOLGER",
+    "dept": "정보시스템학과",
+    "campus": "서울",
+    "scopusId": "11240943700",
+    "familyName": "Kutzner",
+    "givenName": "Arne",
+    "nameEn": "Arne Kutzner"
+  },
+  {
+    "nameKo": "이욱",
+    "dept": "정보시스템학과",
+    "campus": "서울",
+    "scopusId": "7103020210",
+    "familyName": "Lee",
+    "givenName": "ook",
+    "nameEn": "ook lee"
+  },
+  {
+    "nameKo": "오현옥",
+    "dept": "정보시스템학과",
+    "campus": "서울",
+    "scopusId": "7402326124",
+    "familyName": "Oh",
+    "givenName": "Hyunok",
+    "nameEn": "HYUNOK OH"
+  },
+  {
+    "nameKo": "안종창",
+    "dept": "정보시스템학과",
+    "campus": "서울",
+    "scopusId": "55319971300",
+    "familyName": "Ahn",
+    "givenName": "Jongchang",
+    "nameEn": "Ahn, Jongchang"
+  },
+  {
+    "nameKo": "원영준",
+    "dept": "정보시스템학과",
+    "campus": "서울",
+    "scopusId": "7102129158",
+    "familyName": "Won",
+    "givenName": "Youngjoon",
+    "nameEn": "Youngjoon Won"
+  },
+  {
+    "nameKo": "박현석",
+    "dept": "정보시스템학과",
+    "campus": "서울",
+    "scopusId": "56175641800",
+    "familyName": "Park",
+    "givenName": "Hyunseok",
+    "nameEn": "Hyunseok Park"
+  },
+  {
+    "nameKo": "김은찬",
+    "dept": "정보시스템학과",
+    "campus": "서울",
+    "familyName": "Kim",
+    "givenName": "Eunchan",
+    "nameEn": "Eunchan Kim"
+  },
+  {
+    "nameKo": "최진식",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "7501395652",
+    "familyName": "Choi",
+    "givenName": "Jin Seek",
+    "nameEn": "CHOI JIN SEEK"
+  },
+  {
+    "nameKo": "김상욱",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "55933677600",
+    "familyName": "Kim",
+    "givenName": "Sang-Wook",
+    "nameEn": "Sang-Wook Kim"
+  },
+  {
+    "nameKo": "백은옥",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "8259248200",
+    "familyName": "Paek",
+    "givenName": "Eunok",
+    "nameEn": "Paek, Eunok"
+  },
+  {
+    "nameKo": "박종일",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "34768828500",
+    "familyName": "Park",
+    "givenName": "Jong-Il",
+    "nameEn": "PARK,  JONG-IL"
+  },
+  {
+    "nameKo": "차재혁",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "24472530200",
+    "familyName": "Cha",
+    "givenName": "Jae Hyuk",
+    "nameEn": "Cha, Jae Hyuk"
+  },
+  {
+    "nameKo": "장의선",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "7006157400",
+    "familyName": "Jang",
+    "givenName": "Euee S.",
+    "nameEn": "Euee S. Jang"
+  },
+  {
+    "nameKo": "최용석",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "56055020700",
+    "familyName": "Choi",
+    "givenName": "Yong Suk",
+    "nameEn": "Yong Suk Choi"
+  },
+  {
+    "nameKo": "박희진",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "57190847566",
+    "familyName": "Park",
+    "givenName": "Heejin",
+    "nameEn": "Park, Heejin"
+  },
+  {
+    "nameKo": "강수용",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "7405685541",
+    "familyName": "Kang",
+    "givenName": "Sooyong",
+    "nameEn": "Sooyong Kang"
+  },
+  {
+    "nameKo": "박용수",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "7405369734",
+    "familyName": "Park",
+    "givenName": "Yongsu",
+    "nameEn": "Yongsu Park"
+  },
+  {
+    "nameKo": "유민수",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "10140642100",
+    "familyName": "Ryu",
+    "givenName": "Minsoo",
+    "nameEn": "Minsoo Ryu"
+  },
+  {
+    "nameKo": "임을규",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "35876146600",
+    "familyName": "Im",
+    "givenName": "Eul Gyu",
+    "nameEn": "Eul Gyu Im"
+  },
+  {
+    "nameKo": "이춘화",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "7410152898",
+    "familyName": "Lee",
+    "givenName": "Choonhwa",
+    "nameEn": "Choonhwa Lee"
+  },
+  {
+    "nameKo": "권태수",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "58106932900",
+    "familyName": "Kwon",
+    "givenName": "Taesoo",
+    "nameEn": "Taesoo Kwon"
+  },
+  {
+    "nameKo": "김광욱",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "7409321180",
+    "familyName": "Kim",
+    "givenName": "Kwanguk",
+    "nameEn": "Kim, Kwanguk"
+  },
+  {
+    "nameKo": "노미나",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "16302227400",
+    "familyName": "Mina",
+    "givenName": "Rho",
+    "nameEn": "Rho Mina"
+  },
+  {
+    "nameKo": "조동현",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "56119369900",
+    "familyName": "Cho",
+    "givenName": "Donghyeon",
+    "nameEn": "Donghyeon Cho"
+  },
+  {
+    "nameKo": "이윤상",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "56092301900",
+    "familyName": "Lee",
+    "givenName": "Yoonsang",
+    "nameEn": "Yoonsang Lee"
+  },
+  {
+    "nameKo": "김태현",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "55825749100",
+    "familyName": "Kim",
+    "givenName": "Tae Hyun",
+    "nameEn": "Tae Hyun Kim"
+  },
+  {
+    "nameKo": "조영필",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "55792542200",
+    "familyName": "Cho",
+    "givenName": "Yeongpil",
+    "nameEn": "Cho Yeongpil"
+  },
+  {
+    "nameKo": "채동규",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "55735568900",
+    "familyName": "Chae",
+    "givenName": "Dong-Kyu",
+    "nameEn": "Dong-Kyu Chae"
+  },
+  {
+    "nameKo": "김윤호",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "55699526600",
+    "familyName": "Kim",
+    "givenName": "Yunho",
+    "nameEn": "Yunho Kim"
+  },
+  {
+    "nameKo": "노영균",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "23095341800",
+    "familyName": "Noh",
+    "givenName": "Yung-Kyun",
+    "nameEn": "Noh, Yung-Kyun"
+  },
+  {
+    "nameKo": "김은솔",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "56296379200",
+    "familyName": "Kim",
+    "givenName": "Eun-Sol",
+    "nameEn": "Eun-Sol Kim"
+  },
+  {
+    "nameKo": "설웅",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "56277874000",
+    "familyName": "Sul",
+    "givenName": "Woong",
+    "nameEn": "Sul, Woong"
+  },
+  {
+    "nameKo": "이성윤",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "57224862766",
+    "familyName": "Lee",
+    "givenName": "Sungyoon",
+    "nameEn": "Sungyoon Lee"
+  },
+  {
+    "nameKo": "김태욱",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "scopusId": "57216614884",
+    "familyName": "Kimtaeuk",
+    "nameEn": "KIMTAEUK"
+  },
+  {
+    "nameKo": "이헌준",
+    "dept": "컴퓨터소프트웨어학부",
+    "campus": "서울",
+    "familyName": "Lee",
+    "givenName": "Hunjun",
+    "nameEn": "Hunjun Lee"
+  },
+  {
+    "nameKo": "배성우",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "scopusId": "36824404800",
+    "familyName": "Bae",
+    "givenName": "Sungwoo",
+    "nameEn": "BAE SUNGWOO"
+  },
+  {
+    "nameKo": "이주",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "scopusId": "7601452672",
+    "familyName": "Ju",
+    "givenName": "Lee",
+    "nameEn": "Lee Ju"
+  },
+  {
+    "nameKo": "이형철",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "scopusId": "16067010700",
+    "familyName": "Lee",
+    "givenName": "Hyeongcheol",
+    "nameEn": "Lee, Hyeongcheol"
+  },
+  {
+    "nameKo": "정진욱",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "scopusId": "35069194700",
+    "familyName": "Chung",
+    "givenName": "Chinwook",
+    "nameEn": "Chung, ChinWook"
+  },
+  {
+    "nameKo": "김래영",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "scopusId": "7202933100",
+    "familyName": "Kim",
+    "givenName": "Rae-Young",
+    "nameEn": "KIM RAE-YOUNG"
+  },
+  {
+    "nameKo": "Ming-Chieh Lin",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "scopusId": "7404817320",
+    "familyName": "Lin",
+    "givenName": "Ming-Chieh",
+    "nameEn": "Ming-Chieh Lin"
+  },
+  {
+    "nameKo": "이성민",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "scopusId": "55139772600",
+    "familyName": "Lee",
+    "givenName": "Sung-Min",
+    "nameEn": "Sung-Min Lee"
+  },
+  {
+    "nameKo": "김성열",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "familyName": "Kim",
+    "givenName": "Sung-Yul",
+    "nameEn": "KIM, Sung-Yul"
+  },
+  {
+    "nameKo": "문준",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "scopusId": "55845880700",
+    "familyName": "Moon",
+    "givenName": "Jun",
+    "nameEn": "Jun Moon"
+  },
+  {
+    "nameKo": "강창묵",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "familyName": "Kang",
+    "givenName": "Chang Mook",
+    "nameEn": "KANG CHANG MOOK"
+  },
+  {
+    "nameKo": "김선정",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "scopusId": "27167645500",
+    "familyName": "Kim",
+    "givenName": "Seon Jeong",
+    "nameEn": "SEON JEONG KIM"
+  },
+  {
+    "nameKo": "이종민",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "scopusId": "25622544900",
+    "familyName": "Lee",
+    "givenName": "Jong-Min",
+    "nameEn": "Jong-Min Lee"
+  },
+  {
+    "nameKo": "임창환",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "scopusId": "7005671177",
+    "familyName": "Im",
+    "givenName": "Chang-Hwan",
+    "nameEn": "Im, Chang-Hwan"
+  },
+  {
+    "nameKo": "최성용",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "scopusId": "57209837667",
+    "familyName": "Choi",
+    "givenName": "Sungyoung",
+    "nameEn": "Choi Sungyoung"
+  },
+  {
+    "nameKo": "김성환",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "scopusId": "57192890709",
+    "familyName": "Kim",
+    "givenName": "Sunghwan",
+    "nameEn": "Kim, Sunghwan"
+  },
+  {
+    "nameKo": "유형석",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "scopusId": "25625778900",
+    "familyName": "Yoo",
+    "givenName": "Hyoungsuk",
+    "nameEn": "Yoo, Hyoungsuk"
+  },
+  {
+    "nameKo": "김안모",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "scopusId": "40361129200",
+    "familyName": "Kim",
+    "givenName": "Anmo",
+    "nameEn": "Kim, Anmo"
+  },
+  {
+    "nameKo": "최창순",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "scopusId": "57202811755",
+    "familyName": "최창순",
+    "nameEn": "최창순"
+  },
+  {
+    "nameKo": "이병훈",
+    "dept": "전기·생체공학부",
+    "campus": "서울",
+    "scopusId": "56647117000",
+    "familyName": "Lee",
+    "givenName": "Byunghun",
+    "nameEn": "Lee Byunghun"
+  },
+  {
+    "nameKo": "정용재",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "21735768400",
+    "familyName": "Chung",
+    "givenName": "Yong-Chae",
+    "nameEn": "Yong-Chae  Chung"
+  },
+  {
+    "nameKo": "안진호",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "7403019709",
+    "familyName": "Ahn",
+    "givenName": "Jinho",
+    "nameEn": "Jinho Ahn"
+  },
+  {
+    "nameKo": "김현우",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "35324882800",
+    "familyName": "Kim",
+    "givenName": "Hyoun Woo",
+    "nameEn": "Hyoun Woo Kim"
+  },
+  {
+    "nameKo": "윤종승",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "57201416616",
+    "familyName": "Yoon",
+    "givenName": "Chong Seung",
+    "nameEn": "Yoon, Chong Seung"
+  },
+  {
+    "nameKo": "신동욱",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "57193934795",
+    "familyName": "Shin",
+    "givenName": "Dong Wook",
+    "nameEn": "SHIN, DONG WOOK"
+  },
+  {
+    "nameKo": "장재일",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "56238624300",
+    "familyName": "Jang",
+    "givenName": "Jae-il",
+    "nameEn": "Jae-il Jang"
+  },
+  {
+    "nameKo": "박진성",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "8044372500",
+    "familyName": "Park",
+    "givenName": "Jin Seong",
+    "nameEn": "JIN SEONG PARK"
+  },
+  {
+    "nameKo": "박원일",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "7402229532",
+    "familyName": "Park",
+    "givenName": "Won Il",
+    "nameEn": "Won Il Park"
+  },
+  {
+    "nameKo": "최창환",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "56693553400",
+    "familyName": "Choi",
+    "givenName": "Changhwan",
+    "nameEn": "Changhwan Choi"
+  },
+  {
+    "nameKo": "이종원",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "58852901000",
+    "familyName": "Lee",
+    "givenName": "Jong-Won",
+    "nameEn": "Jong-Won Lee"
+  },
+  {
+    "nameKo": "임원빈",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "8091604200",
+    "familyName": "Im",
+    "givenName": "Won Bin",
+    "nameEn": "Won Bin Im"
+  },
+  {
+    "nameKo": "정두석",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "7102257240",
+    "familyName": "Seok",
+    "givenName": "Jeong Doo",
+    "nameEn": "Jeong Doo Seok"
+  },
+  {
+    "nameKo": "정현도",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "55575392600",
+    "familyName": "Jung",
+    "givenName": "Hyun-Do",
+    "nameEn": "Hyun-Do Jung"
+  },
+  {
+    "nameKo": "한태희",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "56531297700",
+    "familyName": "Han",
+    "givenName": "Tae-Hee",
+    "nameEn": "Tae-Hee Han"
+  },
+  {
+    "nameKo": "한혁수",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "familyName": "Han",
+    "givenName": "Hyuksu",
+    "nameEn": "Hyuksu Han"
+  },
+  {
+    "nameKo": "한정호",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "56019417300",
+    "familyName": "Han",
+    "givenName": "Jeongho",
+    "nameEn": "Jeongho Han"
+  },
+  {
+    "nameKo": "김형진",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "57218447834",
+    "familyName": "Kim",
+    "givenName": "Hyungjin",
+    "nameEn": "Hyungjin Kim"
+  },
+  {
+    "nameKo": "최선진",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "37101425600",
+    "familyName": "Choi",
+    "givenName": "Seon-Jin",
+    "nameEn": "Seon-Jin Choi"
+  },
+  {
+    "nameKo": "오누리",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "15765887700",
+    "familyName": "Oh",
+    "givenName": "Nuri",
+    "nameEn": "Oh Nuri"
+  },
+  {
+    "nameKo": "이승용",
+    "dept": "신소재공학부",
+    "campus": "서울",
+    "scopusId": "57192516389",
+    "familyName": "Lee",
+    "givenName": "Seung-Yong",
+    "nameEn": "Lee, Seung-Yong"
+  },
+  {
+    "nameKo": "오성근",
+    "dept": "화학공학과",
+    "campus": "서울",
+    "scopusId": "7404103103",
+    "familyName": "Oh",
+    "givenName": "Seong-Geun",
+    "nameEn": "OH SEONG-GEUN"
+  },
+  {
+    "nameKo": "김동원",
+    "dept": "화학공학과",
+    "campus": "서울",
+    "scopusId": "57189201444",
+    "familyName": "Kim",
+    "givenName": "Dong-Won",
+    "nameEn": "DONG-WON KIM"
+  },
+  {
+    "nameKo": "김종만",
+    "dept": "화학공학과",
+    "campus": "서울",
+    "scopusId": "7006279535",
+    "familyName": "Kim",
+    "givenName": "Jong-Man",
+    "nameEn": "Kim, Jong-Man"
+  },
+  {
+    "nameKo": "고민재",
+    "dept": "화학공학과",
+    "campus": "서울",
+    "scopusId": "7201495119",
+    "familyName": "Ko",
+    "givenName": "Min Jae",
+    "nameEn": "Ko, Min Jae"
+  },
+  {
+    "nameKo": "문성용",
+    "dept": "화학공학과",
+    "campus": "서울",
+    "scopusId": "8609966100",
+    "familyName": "Mun",
+    "givenName": "Sungyong",
+    "nameEn": "Sungyong Mun"
+  },
+  {
+    "nameKo": "김진국",
+    "dept": "화학공학과",
+    "campus": "서울",
+    "scopusId": "57200621627",
+    "familyName": "Kim",
+    "givenName": "Jin-Kuk",
+    "nameEn": "Kim Jin-Kuk"
+  },
+  {
+    "nameKo": "조은철",
+    "dept": "화학공학과",
+    "campus": "서울",
+    "scopusId": "7202650668",
+    "familyName": "Cho",
+    "givenName": "Eun Chul",
+    "nameEn": "Cho, Eun Chul"
+  },
+  {
+    "nameKo": "상병인",
+    "dept": "화학공학과",
+    "campus": "서울",
+    "scopusId": "9338051300",
+    "familyName": "Byoung-In",
+    "givenName": "Sang",
+    "nameEn": "Sang Byoung-In"
+  },
+  {
+    "nameKo": "김도환",
+    "dept": "화학공학과",
+    "campus": "서울",
+    "scopusId": "34769697400",
+    "familyName": "Kim",
+    "givenName": "Do Hwan",
+    "nameEn": "Kim, Do Hwan"
+  },
+  {
+    "nameKo": "서영웅",
+    "dept": "화학공학과",
+    "campus": "서울",
+    "scopusId": "35231739500",
+    "familyName": "Suh",
+    "givenName": "Young-Woong",
+    "nameEn": "Suh, Young-Woong"
+  },
+  {
+    "nameKo": "염봉준",
+    "dept": "화학공학과",
+    "campus": "서울",
+    "scopusId": "12646250600",
+    "familyName": "Yeom",
+    "givenName": "Bongjun",
+    "nameEn": "Bongjun Yeom"
+  },
+  {
+    "nameKo": "서정길",
+    "dept": "화학공학과",
+    "campus": "서울",
+    "scopusId": "15061821500",
+    "familyName": "Seo",
+    "givenName": "Jeong Gil",
+    "nameEn": "Jeong Gil Seo"
+  },
+  {
+    "nameKo": "임희대",
+    "dept": "화학공학과",
+    "campus": "서울",
+    "scopusId": "49561429700",
+    "familyName": "Lim",
+    "givenName": "Hee-Dae",
+    "nameEn": "Hee-Dae Lim"
+  },
+  {
+    "nameKo": "장윤정",
+    "dept": "화학공학과",
+    "campus": "서울",
+    "scopusId": "56189124000",
+    "familyName": "Jeong",
+    "givenName": "Jang Youn",
+    "nameEn": "Jang Youn Jeong"
+  },
+  {
+    "nameKo": "박기호",
+    "dept": "화학공학과",
+    "campus": "서울",
+    "scopusId": "56677033900",
+    "familyName": "Park",
+    "givenName": "Kiho",
+    "nameEn": "KIHO PARK"
+  },
+  {
+    "nameKo": "김경학",
+    "dept": "화학공학과",
+    "campus": "서울",
+    "scopusId": "56589209600",
+    "familyName": "Kim",
+    "givenName": "Kyeounghak",
+    "nameEn": "Kyeounghak Kim"
+  },
+  {
+    "nameKo": "함동효",
+    "dept": "화학공학과",
+    "campus": "서울",
+    "familyName": "Hahm",
+    "givenName": "Donghyo",
+    "nameEn": "Hahm, Donghyo"
+  },
+  {
+    "nameKo": "윤채옥",
+    "dept": "생명공학과",
+    "campus": "서울",
+    "scopusId": "7101911535",
+    "familyName": "Ok",
+    "givenName": "Yun Chae",
+    "nameEn": "Yun Chae Ok"
+  },
+  {
+    "nameKo": "류성언",
+    "dept": "생명공학과",
+    "campus": "서울",
+    "scopusId": "7402110974",
+    "familyName": "Ryu",
+    "givenName": "Seong Eon",
+    "nameEn": "Seong Eon Ryu"
+  },
+  {
+    "nameKo": "이민형",
+    "dept": "생명공학과",
+    "campus": "서울",
+    "scopusId": "57203455317",
+    "familyName": "Lee",
+    "givenName": "Minhyung",
+    "nameEn": "Minhyung Lee"
+  },
+  {
+    "nameKo": "이근용",
+    "dept": "생명공학과",
+    "campus": "서울",
+    "scopusId": "57219405477",
+    "familyName": "Lee",
+    "givenName": "Kuen Yong",
+    "nameEn": "Kuen Yong Lee"
+  },
+  {
+    "nameKo": "신흥수",
+    "dept": "생명공학과",
+    "campus": "서울",
+    "scopusId": "7404012483",
+    "familyName": "Shin",
+    "givenName": "Heungsoo",
+    "nameEn": "Shin Heungsoo"
+  },
+  {
+    "nameKo": "이상경",
+    "dept": "생명공학과",
+    "campus": "서울",
+    "scopusId": "56193615200",
+    "familyName": "Lee",
+    "givenName": "Sang-Kyung",
+    "nameEn": "Sang-Kyung Lee"
+  },
+  {
+    "nameKo": "이동윤",
+    "dept": "생명공학과",
+    "campus": "서울",
+    "scopusId": "55698935900",
+    "familyName": "Lee",
+    "givenName": "Dong Yun",
+    "nameEn": "DONG YUN LEE"
+  },
+  {
+    "nameKo": "임태연",
+    "dept": "생명공학과",
+    "campus": "서울",
+    "scopusId": "6603303607",
+    "familyName": "Rhim",
+    "givenName": "Taiyoun",
+    "nameEn": "Taiyoun Rhim"
+  },
+  {
+    "nameKo": "임동현",
+    "dept": "생명공학과",
+    "campus": "서울",
+    "familyName": "Lim",
+    "givenName": "Donghyun",
+    "nameEn": "Donghyun Lim"
+  },
+  {
+    "nameKo": "정재윤",
+    "dept": "유기나노공학과",
+    "campus": "서울",
+    "scopusId": "7004362198",
+    "familyName": "Yun",
+    "givenName": "Jaung Jae",
+    "nameEn": "Jaung Jae Yun"
+  },
+  {
+    "nameKo": "안희준",
+    "dept": "유기나노공학과",
+    "campus": "서울",
+    "scopusId": "55615307300",
+    "familyName": "Ahn",
+    "givenName": "Heejoon",
+    "nameEn": "Ahn, Heejoon"
+  },
+  {
+    "nameKo": "한태희",
+    "dept": "유기나노공학과",
+    "campus": "서울",
+    "scopusId": "56531297700",
+    "familyName": "Han",
+    "givenName": "Tae Hee",
+    "nameEn": "HAN TAE HEE"
+  },
+  {
+    "nameKo": "위정재",
+    "dept": "유기나노공학과",
+    "campus": "서울",
+    "scopusId": "26041261000",
+    "familyName": "Wie",
+    "givenName": "Jeongjae",
+    "nameEn": "JEONGJAE WIE"
+  },
+  {
+    "nameKo": "정인환",
+    "dept": "유기나노공학과",
+    "campus": "서울",
+    "scopusId": "34874884800",
+    "familyName": "Jung",
+    "givenName": "In Hwan",
+    "nameEn": "In Hwan Jung"
+  },
+  {
+    "nameKo": "박희준",
+    "dept": "유기나노공학과",
+    "campus": "서울",
+    "scopusId": "35093195600",
+    "familyName": "Park",
+    "givenName": "Hui Joon",
+    "nameEn": "Hui Joon Park"
+  },
+  {
+    "nameKo": "이태경",
+    "dept": "유기나노공학과",
+    "campus": "서울",
+    "familyName": "Lee",
+    "givenName": "Tae Kyung",
+    "nameEn": "Tae Kyung Lee"
+  },
+  {
+    "nameKo": "엄영호",
+    "dept": "유기나노공학과",
+    "campus": "서울",
+    "scopusId": "56108103900",
+    "familyName": "Eom",
+    "givenName": "Youngho",
+    "nameEn": "Youngho Eom"
+  },
+  {
+    "nameKo": "백운규",
+    "dept": "에너지공학과",
+    "campus": "서울",
+    "scopusId": "7006797606",
+    "familyName": "Paik",
+    "givenName": "Ungyu",
+    "nameEn": "Paik, Ungyu"
+  },
+  {
+    "nameKo": "선양국",
+    "dept": "에너지공학과",
+    "campus": "서울",
+    "scopusId": "55551960800",
+    "familyName": "Sun",
+    "givenName": "Yang-Kook",
+    "nameEn": "Yang-Kook Sun"
+  },
+  {
+    "nameKo": "김한수",
+    "dept": "에너지공학과",
+    "campus": "서울",
+    "scopusId": "56151107400",
+    "familyName": "Kim",
+    "givenName": "Hansu",
+    "nameEn": "Hansu Kim"
+  },
+  {
+    "nameKo": "박호범",
+    "dept": "에너지공학과",
+    "campus": "서울",
+    "scopusId": "7601568195",
+    "familyName": "Park",
+    "givenName": "Ho Bum",
+    "nameEn": "PARK HO BUM"
+  },
+  {
+    "nameKo": "이윤정",
+    "dept": "에너지공학과",
+    "campus": "서울",
+    "scopusId": "27172231300",
+    "familyName": "Lee",
+    "givenName": "Yun Jung",
+    "nameEn": "Yun Jung Lee"
+  },
+  {
+    "nameKo": "장재영",
+    "dept": "에너지공학과",
+    "campus": "서울",
+    "scopusId": "55730015300",
+    "familyName": "Jang",
+    "givenName": "Jaeyoung",
+    "nameEn": "Jaeyoung Jang"
+  },
+  {
+    "nameKo": "송태섭",
+    "dept": "에너지공학과",
+    "campus": "서울",
+    "scopusId": "25825726200",
+    "familyName": "Song",
+    "givenName": "Taeseup",
+    "nameEn": "Song, Taeseup"
+  },
+  {
+    "nameKo": "황장연",
+    "dept": "에너지공학과",
+    "campus": "서울",
+    "scopusId": "56297975400",
+    "familyName": "Hwang",
+    "givenName": "Jang-Yeon",
+    "nameEn": "Jang-Yeon Hwang"
+  },
+  {
+    "nameKo": "김영훈",
+    "dept": "에너지공학과",
+    "campus": "서울",
+    "scopusId": "57221435899",
+    "familyName": "Kim",
+    "givenName": "Young-Hoon",
+    "nameEn": "Young-Hoon Kim"
+  },
+  {
+    "nameKo": "도시현",
+    "dept": "에너지공학과",
+    "campus": "서울",
+    "scopusId": "25936059900",
+    "familyName": "Do",
+    "givenName": "Si Hyun",
+    "nameEn": "Si Hyun Do"
+  },
+  {
+    "nameKo": "박관규",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "55827729700",
+    "familyName": "Park",
+    "givenName": "Kwan Kyu",
+    "nameEn": "Park, Kwan Kyu"
+  },
+  {
+    "nameKo": "김태원",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "55696539300",
+    "familyName": "Kim",
+    "givenName": "Tae-Won",
+    "nameEn": "Tae-Won Kim"
+  },
+  {
+    "nameKo": "박준홍",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "15136887100",
+    "familyName": "Park",
+    "givenName": "Junhong",
+    "nameEn": "Junhong Park"
+  },
+  {
+    "nameKo": "문승재",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "7401616593",
+    "familyName": "Moon",
+    "givenName": "Seung-Jae",
+    "nameEn": "Seung-Jae Moon"
+  },
+  {
+    "nameKo": "송시몬",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "10141170500",
+    "familyName": "Song",
+    "givenName": "Simon",
+    "nameEn": "Song, Simon"
+  },
+  {
+    "nameKo": "윤길호",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "7103257903",
+    "familyName": "Yoon",
+    "givenName": "Gil Ho",
+    "nameEn": "Gil Ho Yoon"
+  },
+  {
+    "nameKo": "박성욱",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "56176474000",
+    "familyName": "Park",
+    "givenName": "Sungwook",
+    "nameEn": "Park, Sungwook"
+  },
+  {
+    "nameKo": "김학성",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "26039149700",
+    "familyName": "Kim",
+    "givenName": "Hak-Sung",
+    "nameEn": "Hak-Sung Kim"
+  },
+  {
+    "nameKo": "엄석기",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "9246118500",
+    "familyName": "Um",
+    "givenName": "Sukkee",
+    "nameEn": "UM, Sukkee"
+  },
+  {
+    "nameKo": "서태원",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "8687541100",
+    "familyName": "Seo",
+    "givenName": "Taewon",
+    "nameEn": "SEO, TAEWON"
+  },
+  {
+    "nameKo": "김영범",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "35299413000",
+    "familyName": "Kim",
+    "givenName": "Young Beom",
+    "nameEn": "Kim, Young Beom"
+  },
+  {
+    "nameKo": "김동립",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "23090968100",
+    "familyName": "Kim",
+    "givenName": "Dong Rip",
+    "nameEn": "Kim, Dong Rip"
+  },
+  {
+    "nameKo": "소홍윤",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "57052300400",
+    "familyName": "So",
+    "givenName": "Hongyun",
+    "nameEn": "Hongyun So"
+  },
+  {
+    "nameKo": "이승환",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "56706828000",
+    "familyName": "Lee",
+    "givenName": "Seung Hwan",
+    "nameEn": "Seung Hwan Lee"
+  },
+  {
+    "nameKo": "곽노균",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "55330609300",
+    "familyName": "Kwak",
+    "givenName": "Rhokyun",
+    "nameEn": "Rhokyun Kwak"
+  },
+  {
+    "nameKo": "왕웨이",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "56962944200",
+    "familyName": "Wang",
+    "givenName": "Wei",
+    "nameEn": "WANG WEI"
+  },
+  {
+    "nameKo": "오기용",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "35305648500",
+    "familyName": "Oh",
+    "givenName": "Ki Yong",
+    "nameEn": "OH KI YONG"
+  },
+  {
+    "nameKo": "박우성",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "familyName": "Park",
+    "givenName": "Woosung",
+    "nameEn": "Woosung Park"
+  },
+  {
+    "nameKo": "배지웅",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "57199910326",
+    "familyName": "Bae",
+    "givenName": "Jiwoong",
+    "nameEn": "Jiwoong Bae"
+  },
+  {
+    "nameKo": "김민구",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "scopusId": "57191481126",
+    "familyName": "Kim",
+    "givenName": "Min Ku",
+    "nameEn": "Kim, Min Ku"
+  },
+  {
+    "nameKo": "박성현",
+    "dept": "기계공학부",
+    "campus": "서울",
+    "familyName": "Park",
+    "givenName": "Seong-Hyun",
+    "nameEn": "Park, Seong-Hyun"
+  },
+  {
+    "nameKo": "김찬형",
+    "dept": "원자력공학과",
+    "campus": "서울",
+    "scopusId": "8071343400",
+    "familyName": "Kim",
+    "givenName": "Chan Hyeong",
+    "nameEn": "Kim, Chan Hyeong"
+  },
+  {
+    "nameKo": "김용균",
+    "dept": "원자력공학과",
+    "campus": "서울",
+    "scopusId": "12344899300",
+    "familyName": "Kim",
+    "givenName": "Yong Kyun",
+    "nameEn": "Kim, Yong Kyun"
+  },
+  {
+    "nameKo": "홍서기",
+    "dept": "원자력공학과",
+    "campus": "서울",
+    "scopusId": "9740203500",
+    "familyName": "Hong",
+    "givenName": "Ser Gi",
+    "nameEn": "HONG, SER GI"
+  },
+  {
+    "nameKo": "정윤선",
+    "dept": "원자력공학과",
+    "campus": "서울",
+    "scopusId": "54912992900",
+    "familyName": "Chung",
+    "givenName": "Yoonsun",
+    "nameEn": "Yoonsun Chung"
+  },
+  {
+    "nameKo": "김성중",
+    "dept": "원자력공학과",
+    "campus": "서울",
+    "scopusId": "36078645900",
+    "familyName": "Kim",
+    "givenName": "Sung Joong",
+    "nameEn": "Kim, Sung Joong"
+  },
+  {
+    "nameKo": "이정표",
+    "dept": "원자력공학과",
+    "campus": "서울",
+    "scopusId": "36476380500",
+    "familyName": "Lee",
+    "givenName": "jungpyo",
+    "nameEn": "jungpyo Lee"
+  },
+  {
+    "nameKo": "김상태",
+    "dept": "원자력공학과",
+    "campus": "서울",
+    "scopusId": "57204021936",
+    "familyName": "Kim",
+    "givenName": "Sangtae",
+    "nameEn": "Sangtae Kim"
+  },
+  {
+    "nameKo": "송민섭",
+    "dept": "원자력공학과",
+    "campus": "서울",
+    "scopusId": "55890437100",
+    "familyName": "Song",
+    "givenName": "Minseop",
+    "nameEn": "MINSEOP SONG"
+  },
+  {
+    "nameKo": "조용흠",
+    "dept": "원자력공학과",
+    "campus": "서울",
+    "scopusId": "57412109500",
+    "familyName": "Jo",
+    "givenName": "Yongheum",
+    "nameEn": "Yongheum Jo"
+  },
+  {
+    "nameKo": "이동호",
+    "dept": "산업공학과",
+    "campus": "서울",
+    "scopusId": "57959349600",
+    "familyName": "Lee",
+    "givenName": "Dong-Ho",
+    "nameEn": "Dong-Ho Lee"
+  },
+  {
+    "nameKo": "정인재",
+    "dept": "산업공학과",
+    "campus": "서울",
+    "scopusId": "7101712544",
+    "familyName": "Jeong",
+    "givenName": "In-Jae",
+    "nameEn": "Jeong In-Jae"
+  },
+  {
+    "nameKo": "배석주",
+    "dept": "산업공학과",
+    "campus": "서울",
+    "scopusId": "12800847700",
+    "familyName": "Bae",
+    "givenName": "Suk Joo",
+    "nameEn": "Suk Joo Bae"
+  },
+  {
+    "nameKo": "김태복",
+    "dept": "산업공학과",
+    "campus": "서울",
+    "scopusId": "14014218000",
+    "familyName": "Kim",
+    "givenName": "Taebok",
+    "nameEn": "Taebok Kim"
+  },
+  {
+    "nameKo": "이기천",
+    "dept": "산업공학과",
+    "campus": "서울",
+    "scopusId": "55776917700",
+    "familyName": "Lee",
+    "givenName": "Kichun",
+    "nameEn": "Kichun Lee"
+  },
+  {
+    "nameKo": "박철진",
+    "dept": "산업공학과",
+    "campus": "서울",
+    "scopusId": "56140970300",
+    "familyName": "Park",
+    "givenName": "Chuljin",
+    "nameEn": "PARK, CHULJIN"
+  },
+  {
+    "nameKo": "송재욱",
+    "dept": "산업공학과",
+    "campus": "서울",
+    "scopusId": "56912576300",
+    "familyName": "Song",
+    "givenName": "Jae Wook",
+    "nameEn": "Song Jae Wook"
+  },
+  {
+    "nameKo": "정지훈",
+    "dept": "산업공학과",
+    "campus": "서울",
+    "familyName": "Chung",
+    "givenName": "Jihoon",
+    "nameEn": "Chung Jihoon"
+  },
+  {
+    "nameKo": "김민성",
+    "dept": "미래자동차공학과",
+    "campus": "서울",
+    "familyName": "Kimminsung",
+    "nameEn": "KIMMINSUNG"
+  },
+  {
+    "nameKo": "유지형",
+    "dept": "미래자동차공학과",
+    "campus": "서울",
+    "scopusId": "55556927500",
+    "familyName": "Yoo",
+    "givenName": "Jihyung",
+    "nameEn": "Jihyung Yoo"
+  },
+  {
+    "nameKo": "민승재",
+    "dept": "미래자동차공학과",
+    "campus": "서울",
+    "scopusId": "7202852272",
+    "familyName": "Min",
+    "givenName": "Seungjae",
+    "nameEn": "Seungjae Min"
+  },
+  {
+    "nameKo": "윤영두",
+    "dept": "미래자동차공학과",
+    "campus": "서울",
+    "scopusId": "15078285000",
+    "familyName": "Yoon",
+    "givenName": "Young-Doo",
+    "nameEn": "Young-Doo Yoon"
+  },
+  {
+    "nameKo": "조한신",
+    "dept": "미래자동차공학과",
+    "campus": "서울",
+    "scopusId": "12804430400",
+    "familyName": "Jo",
+    "givenName": "Han-Shin",
+    "nameEn": "JO, HAN-SHIN"
+  },
+  {
+    "nameKo": "한경석",
+    "dept": "미래자동차공학과",
+    "campus": "서울",
+    "familyName": "Han",
+    "givenName": "Kyoungseok",
+    "nameEn": "Kyoungseok Han"
+  },
+  {
+    "nameKo": "조기춘",
+    "dept": "미래자동차공학과",
+    "campus": "서울",
+    "scopusId": "36470196200",
+    "familyName": "Jo",
+    "givenName": "Kichun",
+    "nameEn": "Kichun Jo"
+  },
+  {
+    "nameKo": "임명섭",
+    "dept": "미래자동차공학과",
+    "campus": "서울",
+    "scopusId": "56421264500",
+    "familyName": "Lim",
+    "givenName": "Myung-Seop",
+    "nameEn": "Myung-Seop Lim"
+  },
+  {
+    "nameKo": "황순민",
+    "dept": "미래자동차공학과",
+    "campus": "서울",
+    "scopusId": "57211724237",
+    "familyName": "Hwang",
+    "givenName": "Soonmin",
+    "nameEn": "Soonmin Hwang"
+  },
+  {
+    "nameKo": "이동진",
+    "dept": "미래자동차공학과",
+    "campus": "서울",
+    "scopusId": "57216458338",
+    "familyName": "Lee",
+    "givenName": "Dongjin",
+    "nameEn": "Dongjin Lee"
+  },
+  {
+    "nameKo": "김형숙",
+    "dept": "데이터사이언스학부",
+    "campus": "서울",
+    "scopusId": "56938160200",
+    "familyName": "Kim",
+    "givenName": "Hyung Sook",
+    "nameEn": "Kim Hyung Sook"
+  },
+  {
+    "nameKo": "설선혜",
+    "dept": "데이터사이언스학부",
+    "campus": "서울",
+    "familyName": "Sul",
+    "givenName": "Sunhae",
+    "nameEn": "Sunhae Sul"
+  },
+  {
+    "nameKo": "김성신",
+    "dept": "데이터사이언스학부",
+    "campus": "서울",
+    "scopusId": "54412339900",
+    "familyName": "Kim",
+    "givenName": "Sung Shin",
+    "nameEn": "Sung Shin Kim"
+  },
+  {
+    "nameKo": "임형욱",
+    "dept": "데이터사이언스학부",
+    "campus": "서울",
+    "scopusId": "55769523100",
+    "familyName": "Yim",
+    "givenName": "Hyungwook",
+    "nameEn": "Hyungwook Yim"
+  },
+  {
+    "nameKo": "노영태",
+    "dept": "데이터사이언스학부",
+    "campus": "서울",
+    "scopusId": "36105411600",
+    "familyName": "Noh",
+    "givenName": "Youngtae",
+    "nameEn": "Youngtae Noh"
+  },
+  {
+    "nameKo": "이경용",
+    "dept": "데이터사이언스학부",
+    "campus": "서울",
+    "familyName": "Lee",
+    "givenName": "Kyungyong",
+    "nameEn": "Kyungyong Lee"
+  },
+  {
+    "nameKo": "한경식",
+    "dept": "데이터사이언스학부",
+    "campus": "서울",
+    "scopusId": "58643233700",
+    "familyName": "Han",
+    "givenName": "Kyungsik",
+    "nameEn": "Han, Kyungsik"
+  },
+  {
+    "nameKo": "김미숙",
+    "dept": "데이터사이언스학부",
+    "campus": "서울",
+    "scopusId": "57194274736",
+    "familyName": "Kim",
+    "givenName": "Misuk",
+    "nameEn": "KIM MISUK"
+  },
+  {
+    "nameKo": "김현준",
+    "dept": "데이터사이언스학부",
+    "campus": "서울",
+    "scopusId": "57191718006",
+    "familyName": "Kim",
+    "givenName": "Hyunjoon",
+    "nameEn": "Hyunjoon Kim"
+  },
+  {
+    "nameKo": "백성용",
+    "dept": "데이터사이언스학부",
+    "campus": "서울",
+    "scopusId": "57216368459",
+    "familyName": "Baik",
+    "givenName": "Sungyong",
+    "nameEn": "Sungyong Baik"
+  },
+  {
+    "nameKo": "김동진",
+    "dept": "데이터사이언스학부",
+    "campus": "서울",
+    "scopusId": "57212363853",
+    "familyName": "Kim",
+    "givenName": "Dong-Jin",
+    "nameEn": "Dong-Jin Kim"
   }
 ]
