@@ -193,7 +193,7 @@ tr:hover td { background: var(--bg3); }
 .col-date { min-width: 130px; }
 .col-journal { min-width: 150px; max-width: 190px; }
 .col-role { min-width: 130px; }
-.col-corr { min-width: 100px; }
+
 .col-status { min-width: 90px; }
 .col-issues { min-width: 130px; }
 
