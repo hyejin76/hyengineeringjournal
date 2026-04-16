@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>연구실적 DOI 검증 시스템</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -25,6 +24,7 @@
       </div>
       <nav class="header-actions">
         <button class="btn-ghost" id="btnHelp" onclick="toggleHelp()">사용법</button>
+        <button class="btn-ghost" id="btnSettings" onclick="toggleSettings()">⚙ 설정</button>
         <button class="btn-ghost" id="btnExport" disabled onclick="exportCSV()">CSV 내보내기</button>
         <button class="btn-primary" id="btnVerifyAll" disabled onclick="verifyAll()">
           <span class="btn-icon">▶</span> 전체 검증 시작
@@ -52,6 +52,38 @@
         · <b>참여자</b>: 위 조건 미해당 (제2저자 이하)
       </div>
       <button class="btn-ghost" onclick="toggleHelp()" style="margin-top:1rem">닫기</button>
+    </div>
+  </div>
+
+  <!-- SETTINGS PANEL -->
+  <div class="settings-panel" id="settingsPanel" style="display:none">
+    <div class="settings-inner">
+      <h3>API 설정</h3>
+      <div class="settings-grid">
+        <div class="settings-section">
+          <div class="settings-label">Scopus API Key</div>
+          <div class="settings-row">
+            <input type="password" id="scopusApiKey" placeholder="Elsevier API Key 입력..." style="width:320px;font-family:var(--mono);font-size:12px">
+            <button class="btn-ghost sm" onclick="saveScopusKey()">저장</button>
+            <button class="btn-ghost sm" onclick="testScopusKey()">연결 테스트</button>
+          </div>
+          <div class="settings-hint">dev.elsevier.com에서 발급한 API Key를 입력하세요. 브라우저에만 저장되며 서버로 전송되지 않습니다.</div>
+          <div id="scopusKeyStatus" class="settings-status"></div>
+        </div>
+        <div class="settings-section">
+          <div class="settings-label">연구자 DB (researchers.json)</div>
+          <div class="settings-row">
+            <input type="file" id="researchersFile" accept=".json" onchange="loadResearchers(event)" style="font-size:12px">
+          </div>
+          <div class="settings-hint">nameKo(한글명) + scopusId 가 포함된 JSON 파일을 업로드하세요.</div>
+          <div id="researchersStatus" class="settings-status"></div>
+        </div>
+      </div>
+      <div class="settings-note">
+        <strong>researchers.json 형식 예시</strong><br>
+        <code>[{"nameKo": "윤종승", "scopusId": "12345678900", "dept": "신소재공학부"}, ...]</code>
+      </div>
+      <button class="btn-ghost" onclick="toggleSettings()" style="margin-top:1rem">닫기</button>
     </div>
   </div>
 
@@ -130,7 +162,7 @@
           <thead>
             <tr>
               <th class="col-no">#</th>
-              <th class="col-title">논문제목</th>
+              <th class="col-title">논문제목<br><span class="th-sub">원본 / DOI</span></th>
               <th class="col-doi">DOI</th>
               <th class="col-date">발표일<br><span class="th-sub">원본 / DOI</span></th>
               <th class="col-journal">학술지명<br><span class="th-sub">원본 / DOI</span></th>
