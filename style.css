@@ -315,3 +315,11 @@ tr:hover td { background: var(--bg3); }
   font-size: 11px; color: var(--accent); word-break: break-all;
 }
 @media (max-width: 768px) { .settings-grid { grid-template-columns: 1fr; } }
+
+/* ── 평가기간 / 저자수 컬럼 ── */
+.col-period { min-width: 110px; }
+.col-authors { min-width: 90px; }
+.period-badge { display:inline-block; padding:2px 8px; border-radius:20px; font-size:11px; font-weight:500; }
+.period-badge.ok { background:var(--ok-bg); color:var(--ok); }
+.period-badge.fail { background:var(--fail-bg); color:var(--fail); }
+.period-badge.none { background:var(--bg3); color:var(--text3); }
