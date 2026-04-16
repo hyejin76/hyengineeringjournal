@@ -58,30 +58,42 @@
   <!-- SETTINGS PANEL -->
   <div class="settings-panel" id="settingsPanel" style="display:none">
     <div class="settings-inner">
-      <h3>API 설정</h3>
+      <h3>검증 설정</h3>
       <div class="settings-grid">
         <div class="settings-section">
-          <div class="settings-label">Scopus API Key</div>
+          <div class="settings-label">검증 대상자 이름 (한글)</div>
           <div class="settings-row">
-            <input type="password" id="scopusApiKey" placeholder="Elsevier API Key 입력..." style="width:320px;font-family:var(--mono);font-size:12px">
-            <button class="btn-ghost sm" onclick="saveScopusKey()">저장</button>
-            <button class="btn-ghost sm" onclick="testScopusKey()">연결 테스트</button>
+            <input type="text" id="targetName" placeholder="예: 윤종승" style="width:200px">
+            <button class="btn-ghost sm" onclick="saveTargetName()">저장</button>
           </div>
-          <div class="settings-hint">dev.elsevier.com에서 발급한 API Key를 입력하세요. 브라우저에만 저장되며 서버로 전송되지 않습니다.</div>
-          <div id="scopusKeyStatus" class="settings-status"></div>
+          <div class="settings-hint">엑셀의 '성명' 컬럼 대신 이 이름으로 참여형태를 검증합니다. 저장하면 브라우저에 기억됩니다.</div>
+          <div id="targetNameStatus" class="settings-status"></div>
         </div>
         <div class="settings-section">
-          <div class="settings-label">연구자 DB (researchers.json)</div>
+          <div class="settings-label">연구자 DB 상태</div>
           <div class="settings-row">
             <input type="file" id="researchersFile" accept=".json" onchange="loadResearchers(event)" style="font-size:12px">
           </div>
-          <div class="settings-hint">nameKo(한글명) + scopusId 가 포함된 JSON 파일을 업로드하세요.</div>
+          <div class="settings-hint">researchers.json은 페이지 로드 시 자동으로 불러옵니다. 업데이트된 파일이 있을 때만 수동 업로드하세요.</div>
           <div id="researchersStatus" class="settings-status"></div>
         </div>
       </div>
-      <div class="settings-note">
-        <strong>researchers.json 형식 예시</strong><br>
-        <code>[{"nameKo": "윤종승", "scopusId": "12345678900", "dept": "신소재공학부"}, ...]</code>
+      <div class="settings-section" style="margin-top:1rem">
+        <div class="settings-label">업적평가 기간 설정</div>
+        <div class="settings-row">
+          <select id="evalType" onchange="saveEvalPeriod()" style="font-size:13px;padding:6px 10px">
+            <option value="first">전반기 (1월 1일 ~ 12월 31일)</option>
+            <option value="second">후반기 (전년도 7월 1일 ~ 6월 30일)</option>
+          </select>
+          <select id="evalYear" onchange="saveEvalPeriod()" style="font-size:13px;padding:6px 10px">
+          </select>
+          <span id="evalPeriodDisplay" style="font-size:12px;color:var(--text2);padding:4px 8px;background:var(--bg3);border-radius:6px"></span>
+        </div>
+        <div class="settings-hint">논문이 해당 평가 기간 내에 출판됐는지 검증합니다. CrossRef의 가장 이른 출판일(print/online 중 빠른 날짜)을 기준으로 합니다.</div>
+      </div>
+      <div class="settings-note" style="margin-top:1rem">
+        <strong>참여형태 판별 우선순위</strong><br>
+        <code>① 교신저자명 컬럼 (엑셀) → ② PubMed corresp 플래그 → ③ CrossRef 저자순서</code>
       </div>
       <button class="btn-ghost" onclick="toggleSettings()" style="margin-top:1rem">닫기</button>
     </div>
@@ -130,6 +142,14 @@
         <div class="stat-val" id="s-role">0</div>
         <div class="stat-label">참여형태 불일치</div>
       </div>
+      <div class="stat-item warn">
+        <div class="stat-val" id="s-period">0</div>
+        <div class="stat-label">기간외</div>
+      </div>
+      <div class="stat-item fail">
+        <div class="stat-val" id="s-authors">0</div>
+        <div class="stat-label">저자수 불일치</div>
+      </div>
       <div class="progress-wrap" id="progressWrap" style="display:none">
         <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
         <div class="progress-label" id="progressLabel">0 / 0</div>
@@ -144,6 +164,8 @@
           <option value="ok">✓ 일치</option>
           <option value="fail">✗ 불일치</option>
           <option value="role_only">⚑ 참여형태 불일치</option>
+          <option value="period_out">📅 평가기간외</option>
+          <option value="author_mismatch">👥 저자수 불일치</option>
           <option value="warn">– 미검증</option>
           <option value="pending">○ 대기중</option>
         </select>
@@ -164,7 +186,9 @@
               <th class="col-no">#</th>
               <th class="col-title">논문제목<br><span class="th-sub">원본 / DOI</span></th>
               <th class="col-doi">DOI</th>
-              <th class="col-date">발표일<br><span class="th-sub">원본 / DOI</span></th>
+              <th class="col-date">발표일<br><span class="th-sub">원본 / 최초출판일</span></th>
+              <th class="col-period">평가기간<br><span class="th-sub">출판일 포함여부</span></th>
+              <th class="col-authors">저자수<br><span class="th-sub">원본 / DOI</span></th>
               <th class="col-journal">학술지명<br><span class="th-sub">원본 / DOI</span></th>
               <th class="col-role">참여형태<br><span class="th-sub">원본 / 판별</span></th>
               <th class="col-corr">교신저자명<br><span class="th-sub">원본</span></th>
