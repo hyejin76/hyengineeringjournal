@@ -445,21 +445,10 @@ async function verifyRow(row) {
     // 3. 교신저자명 컬럼으로 추가 판별
     inferRoleFromCorrNames(row);
 
-    // 4. 판별 결과 확정
-    if (!row.inferredRole || row.inferredRole === 'checking') {
-      if (row._firstAuthor) {
-        // CrossRef에서 제1저자 확인된 경우만 확정
-        row.inferredRole = '제1저자';
-        row.roleSource = 'CrossRef (저자순서)';
-      } else if (row._authorIdx > 0) {
-        // 저자 목록에는 있지만 교신저자 정보 없음 → 판별불가
-        row.inferredRole = null;
-        row.roleSource = null;
-      } else {
-        // CrossRef에서 저자 매칭 자체 실패 → 판별불가
-        row.inferredRole = null;
-        row.roleSource = null;
-      }
+    // 4. 판별 결과 확정 — checking 상태 해제
+    if (row.inferredRole === 'checking') {
+      row.inferredRole = null;
+      row.roleSource = null;
     }
 
     // 5. 최종 이슈 계산
@@ -676,55 +665,33 @@ function applyPubMed(row, pmData) {
   }
 }
 
-/* ── 엑셀 내부 데이터 기반 참여형태 판별 (핵심 로직) ── */
+/* ── 참여형태 판별 ── */
 function inferRoleFromCorrNames(row) {
-  const targetName = getTargetName();
-  const myName = (targetName || row.researcherName).replace(/\s/g, '');
-  if (!myName) return;
+  // 교신저자명 컬럼은 자기 입력값이라 신뢰 불가 → 완전 무시
+  // PubMed에서 판별된 경우에만 사용 (applyPubMed에서 이미 설정됨)
+  // CrossRef 저자 순서로 제1저자/참여자만 판별
 
-  // 교신저자명 파싱: "윤종승, 선양국" 형태
-  const corrList = row.corrNames
-    ? row.corrNames.split(/[,，、]+/).map(s => s.trim()).filter(Boolean)
-    : [];
+  // PubMed에서 이미 판별된 경우 → 그대로 유지
+  if (row.inferredRole && !['제1저자','참여자'].includes(row.inferredRole)) return;
 
-  const nameMatch = (a, b) => {
-    const na = a.replace(/\s/g, '');
-    const nb = b.replace(/\s/g, '');
-    return na === nb || na.includes(nb) || nb.includes(na);
-  };
-
-  const iAmInCorrList = corrList.some(c => nameMatch(c, myName));
-
-  // 교신저자수 컬럼 우선, 없으면 교신저자명 목록 수로 대체
-  const corrCount = row.corrCount > 0 ? row.corrCount : corrList.length;
-  const isFirst = row._firstAuthor || row._pmAuthorIdx === 0;
-
-  if (iAmInCorrList) {
-    // 교신저자명에 본인 포함 → 교신저자 계열 판별
-    if (corrCount >= 2) {
-      row.inferredRole = '공동교신저자';
-    } else if (isFirst) {
-      row.inferredRole = '교신저자&제1저자';
-    } else {
-      row.inferredRole = '교신저자';
-    }
-    row.roleSource = '교신저자명 컬럼';
-
-  } else if (corrList.length > 0) {
-    // 교신저자명이 있는데 본인이 없음 → 제1저자 또는 참여자
-    if (isFirst) {
+  // CrossRef 저자 순서 기반 판별
+  if (row._firstAuthor) {
+    // PubMed 결과 없을 때만 CrossRef로 제1저자 설정
+    if (!row.inferredRole || row.inferredRole === '참여자') {
       row.inferredRole = '제1저자';
       row.roleSource = 'CrossRef (저자순서)';
-    } else {
+    }
+  } else if (row._authorIdx > 0) {
+    if (!row.inferredRole) {
       row.inferredRole = '참여자';
       row.roleSource = 'CrossRef (저자순서)';
     }
-
   } else {
-    // 교신저자명 컬럼이 비어있음
-    // → 원본 참여형태(엑셀 기재값)를 그대로 신뢰하고 불일치 판정 안 함
-    row.inferredRole = row.role || null;
-    row.roleSource = '원본신뢰 (교신자명 미기재)';
+    // CrossRef에서 저자 매칭 실패 or PubMed도 없음 → 검증불가
+    if (!row.inferredRole) {
+      row.inferredRole = null;
+      row.roleSource = null;
+    }
   }
 }
 
@@ -812,10 +779,7 @@ function tokenSim(a, b) {
 }
 
 function roleMatch(recorded, inferred) {
-  if (!recorded || !inferred) return true; // 판별 불가 → 불일치 미표시
-  // 원본 신뢰 케이스 → 불일치 판정 안 함
-  if (inferred === recorded) return true;
-  if (inferred.includes('불명')) return true;
+  if (!recorded || !inferred) return true; // 검증불가 → 불일치 미표시
   const normalize = s => s.toLowerCase()
     .replace(/\s+/g,'')
     .replace('&', '')
@@ -972,7 +936,7 @@ function renderRow(r) {
     <td class="col-authors">${authorCell}</td>
     <td class="col-journal">${journalCell}</td>
     <td class="col-role">${roleCell}</td>
-    <td class="col-corr"><div style="font-size:11px;color:var(--text3)">${r.corrNames || '—'}</div></td>
+
     <td class="col-status">${statusBadge}</td>
     <td class="col-issues">${issuesHtml}</td>
   </tr>`;
@@ -988,18 +952,15 @@ function renderRoleCell(r) {
   const origClass = getRoleBadgeClass(orig);
 
   const origBadge  = `<span class="role-badge ${origClass}">${orig}</span>`;
-  const isUnknown = inferred && inferred.includes('불명');
-  const isTrustedRole = source && source.includes('원본신뢰');
   const inferBadge = inferred && inferred !== 'checking'
-    ? `<span class="role-badge ${isTrustedRole ? origClass : (isUnknown ? 'unknown' : roleClass)}" style="opacity:${isTrustedRole ? '0.75' : '1'}">${inferred} ${isTrustedRole ? '<span style="font-size:9px;opacity:0.7">(원본)</span>' : ''}</span>`
+    ? `<span class="role-badge ${roleClass}">${inferred}</span>`
     : inferred === 'checking'
     ? `<span class="role-badge checking">조회중…</span>`
-    : `<span style="font-size:11px;color:var(--text3);background:var(--bg3);padding:2px 8px;border-radius:20px;">판별불가</span>`;
+    : `<span style="font-size:11px;color:var(--text3);background:var(--bg3);padding:2px 8px;border-radius:20px;display:inline-block">검증불가</span>`;
 
-  const isTrusted = source && source.includes('원본신뢰');
   const sourceLabel = source
-    ? `<span style="font-size:10px;color:${isTrusted ? 'var(--warn)' : 'var(--text3)'}">${source}</span>`
-    : `<span style="font-size:10px;color:var(--text3)">교신저자명 없음</span>`;
+    ? `<span style="font-size:10px;color:var(--text3)">${source}</span>`
+    : `<span style="font-size:10px;color:var(--text3)">PubMed 미등재</span>`;
 
   const mismatchFlag = mismatch
     ? `<span class="role-mismatch-flag">⚑ 불일치</span>` : '';
