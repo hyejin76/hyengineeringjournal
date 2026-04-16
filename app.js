@@ -78,12 +78,35 @@ function checkPeriod(doiDate) {
   if (!doiDate) return null;
   const p = getEvalPeriod();
   if (!p) return null;
-  // 날짜를 YYYYMMDD 숫자로 비교
-  const toNum = s => parseInt(s.replace(/-/g,'').slice(0,8).padEnd(8,'0'));
-  const d = toNum(doiDate);
-  const start = toNum(p.start);
-  const end = toNum(p.end);
-  return { inPeriod: d >= start && d <= end, period: p.label, date: doiDate };
+
+  // 날짜 정규화: YYYY → YYYY-01-01 ~ YYYY-12-31 범위로 처리
+  // YYYY-MM → YYYY-MM-01 ~ YYYY-MM-28 범위로 처리 (월만 있으면 해당 월로 판단)
+  const parts = doiDate.split('-');
+  const year  = parseInt(parts[0]);
+  const month = parts[1] ? parseInt(parts[1]) : null;
+  const day   = parts[2] ? parseInt(parts[2]) : null;
+
+  const pStart = parseInt(p.start.replace(/-/g,''));
+  const pEnd   = parseInt(p.end.replace(/-/g,''));
+
+  let inPeriod;
+  if (!month) {
+    // 연도만: 해당 연도의 어느 달이든 평가기간과 겹치면 기간 내
+    const yearStart = year * 10000 + 101;
+    const yearEnd   = year * 10000 + 1231;
+    inPeriod = yearStart <= pEnd && yearEnd >= pStart;
+  } else if (!day) {
+    // 연월: 해당 월의 1일~말일이 평가기간과 겹치면 기간 내
+    const monthStart = year * 10000 + month * 100 + 1;
+    const monthEnd   = year * 10000 + month * 100 + 28;
+    inPeriod = monthStart <= pEnd && monthEnd >= pStart;
+  } else {
+    // 완전한 날짜
+    const d = year * 10000 + month * 100 + day;
+    inPeriod = d >= pStart && d <= pEnd;
+  }
+
+  return { inPeriod, period: p.label, date: doiDate };
 }
 
 // 페이지 로드 시 연도 초기화
