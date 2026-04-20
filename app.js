@@ -470,19 +470,27 @@ async function verifyRow(row) {
       row._lookupName = lookupName;
     }
 
-    // 1. CrossRef
+    // 1. CrossRef (발표일, 학술지명, 논문제목, 저자수, 저자순서)
     const crossrefData = await fetchCrossRef(row.doi);
     if (crossrefData) {
       applyCrossRef(row, crossrefData);
     }
 
-    // 2. PubMed (교신저자 판별 강화)
-    const pubmedData = await fetchPubMed(row.doi);
-    if (pubmedData) {
-      applyPubMed(row, pubmedData);
+    // 2. OpenAlex (교신저자 판별 핵심 — 무료, CORS 없음)
+    const openAlexData = await fetchOpenAlex(row.doi);
+    if (openAlexData) {
+      applyOpenAlex(row, openAlexData);
     }
 
-    // 3. 교신저자명 컬럼으로 추가 판별
+    // 3. PubMed (OpenAlex 실패 시 보조)
+    if (!row.inferredRole || row.roleSource !== 'OpenAlex') {
+      const pubmedData = await fetchPubMed(row.doi);
+      if (pubmedData) {
+        applyPubMed(row, pubmedData);
+      }
+    }
+
+    // 4. 참여형태 최종 확정
     inferRoleFromCorrNames(row);
 
     // 4. 판별 결과 확정 — checking 상태 해제
@@ -498,6 +506,70 @@ async function verifyRow(row) {
     row.status = 'warn';
     row.doiNote = '검증 오류: ' + e.message;
   }
+}
+
+/* ── OpenAlex API (교신저자 판별 핵심) ── */
+async function fetchOpenAlex(doi) {
+  try {
+    const url = `https://api.openalex.org/works/https://doi.org/${encodeURIComponent(doi)}?select=authorships,title,publication_date,primary_location`;
+    const res = await fetch(url, {
+      headers: { 'User-Agent': 'DOI-Verifier/1.0 (mailto:research@hanyang.ac.kr)' }
+    });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch { return null; }
+}
+
+function applyOpenAlex(row, data) {
+  if (!data || !data.authorships) return;
+
+  const authorships = data.authorships;
+  row._openAlexAuthors = authorships;
+
+  // 영문명으로 본인 찾기
+  const engName = row._engName;
+  const myName = row.researcherName.toLowerCase().replace(/\s/g, '');
+
+  let myIdx = -1;
+  for (let i = 0; i < authorships.length; i++) {
+    const a = authorships[i];
+    const dispName = (a.author?.display_name || '').toLowerCase().replace(/\s/g, '');
+
+    // 영문명 family 매칭 (우선)
+    if (engName && engName.family) {
+      const fam = engName.family.toLowerCase();
+      if (dispName.includes(fam)) { myIdx = i; break; }
+    }
+    // 한글명 fallback (거의 안 매칭되지만 혹시)
+    if (dispName === myName) { myIdx = i; break; }
+  }
+
+  if (myIdx === -1) return;
+
+  const me = authorships[myIdx];
+  const isFirst = me.author_position === 'first';
+  const isCorr  = me.is_corresponding === true;
+
+  // 교신저자 수 카운트
+  const corrCount = authorships.filter(a => a.is_corresponding === true).length;
+
+  row._openAlexIdx = myIdx;
+  row._firstAuthor = isFirst;
+
+  if (isFirst && isCorr && corrCount === 1) {
+    row.inferredRole = '교신저자&제1저자';
+  } else if (isFirst && isCorr) {
+    row.inferredRole = '공동교신저자';  // 다수 교신저자 중 제1저자
+  } else if (isFirst) {
+    row.inferredRole = '제1저자';
+  } else if (isCorr && corrCount > 1) {
+    row.inferredRole = '공동교신저자';
+  } else if (isCorr) {
+    row.inferredRole = '교신저자';
+  } else {
+    row.inferredRole = '참여자';
+  }
+  row.roleSource = 'OpenAlex';
 }
 
 /* ── CrossRef API ── */
@@ -707,12 +779,10 @@ function applyPubMed(row, pmData) {
 
 /* ── 참여형태 판별 ── */
 function inferRoleFromCorrNames(row) {
-  // 교신저자명 컬럼은 자기 입력값이라 신뢰 불가 → 완전 무시
-  // PubMed에서 판별된 경우에만 사용 (applyPubMed에서 이미 설정됨)
-  // CrossRef 저자 순서로 제1저자/참여자만 판별
-
-  // PubMed에서 이미 판별된 경우 → 그대로 유지
+  // OpenAlex 또는 PubMed에서 이미 판별된 경우 → 그대로 유지
   if (row.inferredRole && !['제1저자','참여자'].includes(row.inferredRole)) return;
+  // OpenAlex에서 제1저자/참여자로 판별된 경우도 유지
+  if (row.roleSource === 'OpenAlex') return;
 
   // CrossRef 저자 순서 기반 판별
   if (row._firstAuthor) {
@@ -998,9 +1068,10 @@ function renderRoleCell(r) {
     ? `<span class="role-badge checking">조회중…</span>`
     : `<span style="font-size:11px;color:var(--text3);background:var(--bg3);padding:2px 8px;border-radius:20px;display:inline-block">검증불가</span>`;
 
+  const srcColor = source === 'OpenAlex' ? 'var(--ok)' : 'var(--text3)';
   const sourceLabel = source
-    ? `<span style="font-size:10px;color:var(--text3)">${source}</span>`
-    : `<span style="font-size:10px;color:var(--text3)">PubMed 미등재</span>`;
+    ? `<span style="font-size:10px;color:${srcColor}">${source}</span>`
+    : `<span style="font-size:10px;color:var(--text3)">검증불가</span>`;
 
   const mismatchFlag = mismatch
     ? `<span class="role-mismatch-flag">⚑ 불일치</span>` : '';
