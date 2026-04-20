@@ -28,7 +28,7 @@ function saveTargetName() {
 }
 
 function getTargetName() {
-  return localStorage.getItem('targetName') || '';
+  return ''; // 더 이상 사용하지 않음 — 엑셀 성명 컬럼 사용
 }
 
 /* ── 업적평가 기간 ── */
