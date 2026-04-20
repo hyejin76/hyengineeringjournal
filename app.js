@@ -1035,7 +1035,18 @@ function renderRow(r) {
   // 이슈 목록
   let issuesHtml = '<div class="issues-list">';
   r.issues.forEach(i => issuesHtml += `<div class="issue-item">✗ ${i}</div>`);
-  if (r.roleIssue) issuesHtml += `<div class="issue-role">⚑ 참여형태</div>`;
+  if (r.roleIssue) {
+    issuesHtml += `<div class="issue-role">⚑ 참여형태</div>`;
+  }
+  // 참여형태 불일치 또는 검증불가 시 DOI 직접 확인 링크
+  if ((r.roleIssue || !r.inferredRole) && r.doi) {
+    issuesHtml += `<a href="https://doi.org/${r.doi}" target="_blank" rel="noopener"
+      style="display:inline-flex;align-items:center;gap:3px;margin-top:4px;
+      font-size:11px;color:var(--accent);text-decoration:none;padding:2px 7px;
+      border:1px solid var(--accent);border-radius:10px;opacity:0.8"
+      onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.8">
+      ↗ 논문에서 직접 확인</a>`;
+  }
   if (!r.issues.length && !r.roleIssue && r.doiNote)
     issuesHtml += `<div class="issue-note">${r.doiNote}</div>`;
   if (!r.issues.length && !r.roleIssue && !r.doiNote && r.status === 'ok')
