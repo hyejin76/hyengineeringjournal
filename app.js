@@ -529,30 +529,41 @@ function applyOpenAlex(row, data) {
   const myName = row.researcherName.toLowerCase().replace(/\s/g, '');
 
   let myIdx = -1;
-  let fallbackIdx = -1; // family만 일치하는 후보
+  let fallbackIdx = -1;
+
+  const norm = s => (s || '').toLowerCase().replace(/[\s\-\.]/g, '');
 
   for (let i = 0; i < authorships.length; i++) {
     const a = authorships[i];
-    const dispName = (a.author?.display_name || '').toLowerCase().replace(/[\s\-\.]/g, '');
+    const dispName = norm(a.author?.display_name || '');
 
     if (engName && engName.family) {
-      const fam = engName.family.toLowerCase();
-      const giv = (engName.givenName || engName.given || '').toLowerCase().replace(/[\s\-\.]/g, '');
+      const fam = norm(engName.family);
+      const giv = norm(engName.givenName || engName.given || '');
 
-      // family + given 동시 매칭 (가장 정확)
-      if (dispName.includes(fam) && giv && dispName.includes(giv.slice(0, 4))) {
+      // 1순위: family + given 전체 완전 일치
+      if (dispName === fam + giv || dispName === giv + fam) {
         myIdx = i; break;
       }
-      // family만 일치 → 후보로만 저장
+      // 2순위: family 포함 + given 포함 (순서 무관)
+      if (giv && dispName.includes(fam) && dispName.includes(giv)) {
+        myIdx = i; break;
+      }
+      // 3순위: family 포함 + given 앞 절반 이상 일치
+      if (giv.length >= 4) {
+        const givHalf = giv.slice(0, Math.ceil(giv.length * 0.6));
+        if (dispName.includes(fam) && dispName.includes(givHalf)) {
+          if (myIdx === -1) myIdx = i; // 더 좋은 매칭 없으면 사용
+        }
+      }
+      // fallback: family만 일치
       if (dispName.includes(fam) && fallbackIdx === -1) {
         fallbackIdx = i;
       }
     }
-    // 한글명 fallback
     if (dispName === myName) { myIdx = i; break; }
   }
 
-  // 정확 매칭 없으면 family 후보 사용
   if (myIdx === -1) myIdx = fallbackIdx;
 
   if (myIdx === -1) return;
