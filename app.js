@@ -456,18 +456,16 @@ function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 /* ── 단건 검증 ── */
 async function verifyRow(row) {
   try {
-    // 0. 영문명 조회 — 설정의 검증대상자 이름 또는 엑셀 성명 컬럼 사용
-    const targetName = getTargetName();
-    const lookupName = targetName || row.researcherName;
-    const researcher = findResearcher(lookupName);
+    // 0. 영문명 조회 — 엑셀 성명 컬럼 기준으로 researchers.json에서 찾기
+    const researcher = findResearcher(row.researcherName);
     if (researcher && researcher.familyName) {
       row._engName = {
         family: researcher.familyName,
         given:  researcher.givenName || ''
       };
-    } else if (!researcher && lookupName) {
-      // researchers.json에 없으면 엑셀 성명을 그대로 researcherName으로 사용
-      row._lookupName = lookupName;
+    } else if (!researcher && row.researcherName) {
+      // researchers.json에 없으면 엑셀 성명을 그대로 사용
+      row._lookupName = row.researcherName;
     }
 
     // 1. CrossRef (발표일, 학술지명, 논문제목, 저자수, 저자순서)
