@@ -531,18 +531,31 @@ function applyOpenAlex(row, data) {
   const myName = row.researcherName.toLowerCase().replace(/\s/g, '');
 
   let myIdx = -1;
+  let fallbackIdx = -1; // family만 일치하는 후보
+
   for (let i = 0; i < authorships.length; i++) {
     const a = authorships[i];
-    const dispName = (a.author?.display_name || '').toLowerCase().replace(/\s/g, '');
+    const dispName = (a.author?.display_name || '').toLowerCase().replace(/[\s\-\.]/g, '');
 
-    // 영문명 family 매칭 (우선)
     if (engName && engName.family) {
       const fam = engName.family.toLowerCase();
-      if (dispName.includes(fam)) { myIdx = i; break; }
+      const giv = (engName.givenName || engName.given || '').toLowerCase().replace(/[\s\-\.]/g, '');
+
+      // family + given 동시 매칭 (가장 정확)
+      if (dispName.includes(fam) && giv && dispName.includes(giv.slice(0, 4))) {
+        myIdx = i; break;
+      }
+      // family만 일치 → 후보로만 저장
+      if (dispName.includes(fam) && fallbackIdx === -1) {
+        fallbackIdx = i;
+      }
     }
-    // 한글명 fallback (거의 안 매칭되지만 혹시)
+    // 한글명 fallback
     if (dispName === myName) { myIdx = i; break; }
   }
+
+  // 정확 매칭 없으면 family 후보 사용
+  if (myIdx === -1) myIdx = fallbackIdx;
 
   if (myIdx === -1) return;
 
