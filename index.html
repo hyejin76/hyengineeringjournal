@@ -61,15 +61,7 @@
     <div class="settings-inner">
       <h3>검증 설정</h3>
       <div class="settings-grid">
-        <div class="settings-section">
-          <div class="settings-label">검증 대상자 이름 (한글)</div>
-          <div class="settings-row">
-            <input type="text" id="targetName" placeholder="예: 윤종승" style="width:200px">
-            <button class="btn-ghost sm" onclick="saveTargetName()">저장</button>
-          </div>
-          <div class="settings-hint">엑셀의 '성명' 컬럼 대신 이 이름으로 참여형태를 검증합니다. 저장하면 브라우저에 기억됩니다.</div>
-          <div id="targetNameStatus" class="settings-status"></div>
-        </div>
+
         <div class="settings-section">
           <div class="settings-label">연구자 DB 상태</div>
           <div class="settings-row">
@@ -113,7 +105,7 @@
         <div class="upload-title">엑셀 파일을 드래그하거나 클릭하여 업로드</div>
         <div class="upload-sub">.xls · .xlsx 형식 지원 &nbsp;|&nbsp; DOI 컬럼 필수</div>
         <div class="upload-formats">
-          <span>연구실적번호</span><span>DOI</span><span>발표일</span><span>학술지명</span><span>참여형태</span><span>교신저자명</span>
+          <span>연구실적번호</span><span>DOI</span><span>발표일</span><span>학술지명</span><span>참여형태</span>
         </div>
         <input type="file" id="fileInput" accept=".xls,.xlsx" onchange="handleFile(event)">
       </div>
